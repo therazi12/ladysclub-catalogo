@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lady's Club Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:Gaya;src:url(a/gaya-regular.otf);font-style:normal;unicode-range:U+20-7E}
+@font-face{font-family:Gaya;src:url(a/gaya-italic.otf);font-style:italic;unicode-range:U+20-7E}
+@font-face{font-family:Rafaella;src:url(a/rafaella.otf);unicode-range:U+20-7E}
+:root{--r:#C88A96;--b:#5B1632;--h:#F7F5F0;--c:#4B3621;--p:#EFD9DD;--card:#fff;--line:rgba(91,22,50,.14);--mut:#6b5560;--ig:#5B1632}
+:root[data-theme=dark]{--h:#1c1418;--b:#F1D9DF;--c:#d9c8cd;--p:#2c1d24;--card:#261a20;--line:rgba(241,217,223,.16);--mut:#b9a2ab;--r:#D79AA6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--h:#1c1418;--b:#F1D9DF;--c:#d9c8cd;--p:#2c1d24;--card:#261a20;--line:rgba(241,217,223,.16);--mut:#b9a2ab;--r:#D79AA6}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--h);color:var(--b);font-family:'DM Sans',system-ui,sans-serif;line-height:1.55}
+.g{font-family:Gaya,Fraunces,Georgia,serif}.rf{font-family:Rafaella,Fraunces,Georgia,serif}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--h);border-bottom:1px solid var(--line)}
+header .in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px}
+header img.logo{height:38px;display:block}
+nav{display:flex;gap:22px;font-size:15px}nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1;color:var(--r)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--b);color:var(--h);border:0;border-radius:999px;padding:13px 24px;font:700 15px 'DM Sans',sans-serif;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--b);border:1.5px solid var(--b)}
+:root[data-theme=dark] .btn{color:#1c1418}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .btn{color:#1c1418}}
+.hero{position:relative;overflow:hidden;background:repeating-linear-gradient(90deg,transparent 0 80px,color-mix(in srgb,var(--p) 55%,transparent) 80px 160px)}
+.hero .in{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:20px;padding:64px 0 56px}
+.eyes{letter-spacing:.34em;font-size:12px;font-weight:700;text-transform:uppercase}
+.hero h1{font-weight:normal;line-height:.95;margin:14px 0 18px}
+.hero h1 .s{display:block;font-style:italic;font-size:clamp(64px,11vw,128px);color:var(--r)}
+.hero h1 .t{display:block;font-size:clamp(40px,7vw,84px)}
+.hero p{max-width:460px;color:var(--c);font-size:18px;margin-bottom:26px}
+.hero .art{position:relative;text-align:center}
+.hero .art img.iso{width:min(260px,60%)}
+.hero .art img.eli{position:absolute;right:4%;bottom:-6px;width:34%}
+section{padding:64px 0}
+h2.h{font-weight:normal;font-size:clamp(34px,5vw,54px);line-height:1.05;margin:8px 0 26px}
+h2.h i{color:var(--r)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.fl{border:1.5px solid var(--b);background:transparent;color:var(--b);border-radius:999px;padding:9px 20px;font:700 14px 'DM Sans',sans-serif;cursor:pointer}
+.fl[aria-pressed=true]{background:var(--b);color:var(--h)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;text-align:left;color:inherit;font:inherit;padding:0}
+.card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 12px 30px rgba(91,22,50,.16)}
+.ph{position:relative;aspect-ratio:4/5;background:var(--p);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.ph img.main{width:100%;height:100%;object-fit:cover;display:block}
+.ph img.main.contain{object-fit:contain;padding:8%}
+.empty{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--mut);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-align:center}
+.empty img{width:90px;opacity:.85}
+.badge{position:absolute;top:14px;left:14px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:7px 13px;border-radius:999px;background:var(--h);color:var(--b)}
+.badge.out{background:var(--b);color:var(--h)}
+.info{padding:18px 20px 22px}
+.info .n{font-size:26px;line-height:1.1}.info .n.g{font-style:italic}
+.info .k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--r);font-weight:700;margin-bottom:4px}
+.info .pr{margin-top:10px;font-weight:700;font-size:18px}
+dialog{border:0;padding:0;width:min(980px,94vw);max-height:92vh;border-radius:26px;background:var(--h);color:var(--b);overflow:auto}
+dialog::backdrop{background:rgba(40,12,24,.55)}
+.fx{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.gal{background:var(--p);padding:20px;display:flex;flex-direction:column;gap:12px}
+.gal .big{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--card);display:flex;align-items:center;justify-content:center}
+.gal .big img{width:100%;height:100%;object-fit:cover}.gal .big img.contain{object-fit:contain;padding:8%}
+.thumbs{display:flex;gap:10px}.thumbs button{width:64px;height:64px;border-radius:12px;border:2px solid transparent;padding:0;overflow:hidden;background:var(--card);cursor:pointer}
+.thumbs button[aria-current=true]{border-color:var(--b)}.thumbs img{width:100%;height:100%;object-fit:cover}
+.det{padding:34px 34px 30px;position:relative}
+.x{position:absolute;right:16px;top:14px;border:0;background:var(--p);color:var(--b);width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer}
+.det h3{font-weight:normal;font-size:clamp(34px,4vw,46px);line-height:1.05}
+.det .pr{font-size:34px;font-weight:700;margin:12px 0}
+.det p.u{color:var(--c);font-size:17px}
+ol.dt{list-style:none;padding:0;margin:20px 0;display:grid;gap:10px}
+ol.dt li{display:flex;gap:14px;align-items:baseline;font-size:15.5px}
+ol.dt li span{font:italic 22px Gaya,Fraunces,serif;color:var(--r);min-width:28px}
+table.sp{width:100%;border-collapse:collapse;margin:8px 0 22px;font-size:14.5px}
+table.sp th{text-align:left;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);padding:9px 0;border-top:1px solid var(--line);width:36%}
+table.sp td{padding:9px 0;border-top:1px solid var(--line)}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.note{font-size:13px;color:var(--mut);margin-top:12px}
+.ship{background:var(--p)}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.box{background:var(--card);border-radius:22px;padding:26px;border:1px solid var(--line)}
+.box .big{font-size:46px;line-height:1}.box small{display:block;color:var(--mut);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.about .in{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:center}
+.about img{width:100%;max-width:300px;margin:auto;display:block}
+.about p{font-size:19px;color:var(--c);margin-bottom:14px}
+footer{background:var(--b);color:#F7F5F0;padding:44px 0;text-align:center}
+footer .g{font-size:34px;font-style:italic}footer a{color:#EFD9DD}
+footer img{height:42px;margin-bottom:12px}
+.tg{position:fixed;right:14px;bottom:14px;z-index:30;border:1px solid var(--line);background:var(--card);color:var(--b);padding:0 16px;height:40px;border-radius:999px;cursor:pointer;font:700 13px "DM Sans",sans-serif}
+@media (max-width:760px){nav{display:none}.hero .in{grid-template-columns:1fr;padding:40px 0 30px}.hero .art{max-width:280px;margin:0 auto}.fx{grid-template-columns:1fr}.about .in{grid-template-columns:1fr}.det{padding:26px 22px}}
+</style></head><body>
+
+<header><div class="wrap in">
+ <a href="#top"><img class="logo" id="hl" src="a/wm-borgona.png" alt="Lady's Club"></a>
+ <nav><a href="#catalogo">Bolsos</a><a href="#envios">Envíos</a><a href="#nosotras">Nosotras</a></nav>
+ <a class="btn" data-ig href="#">Pedir por mensaje</a>
+</div></header>
+
+<main id="top">
+<section class="hero" style="padding:0"><div class="wrap in">
+ <div>
+  <div class="eyes">Catálogo · Guayaquil, Ecuador</div>
+  <h1><span class="s g">Catálogo</span><span class="t rf">Lady's Club</span></h1>
+  <p>Bolsos pensados para el uso diario: espacio para tu laptop, tus cuadernos y todo lo que llevas. Elige el tuyo y pídelo por mensaje.</p>
+  <a class="btn" href="#catalogo">Ver bolsos</a> <a class="btn alt" data-ig href="#">Escríbenos</a>
+ </div>
+ <div class="art"><img class="iso" id="iso" src="a/iso-borgona.png" alt="Isotipo Lady's Club"><img class="eli" src="a/eli-peek.png" alt="Eli, la conejita de Lady's Club"></div>
+</div></section>
+
+<section id="catalogo"><div class="wrap">
+ <div class="eyes">El catálogo</div>
+ <h2 class="h g">Nuestros <i>bolsos</i></h2>
+ <div class="filters" id="fl"></div>
+ <div class="grid" id="gr"></div>
+</div></section>
+
+<section class="ship" id="envios"><div class="wrap">
+ <div class="eyes">Envíos</div>
+ <h2 class="h g">Que tu pedido llegue <i>seguro</i>, rápido y con mucho amor</h2>
+ <div class="sg">
+  <div class="box"><small>Guayaquil</small><div class="big g">$3,50</div><p style="margin-top:10px;color:var(--c)">Servientrega o motorizado, bajo coordinación.</p></div>
+  <div class="box"><small>Provincias</small><div class="big g">$7,00</div><p style="margin-top:10px;color:var(--c)">Envíos a todo el país por Servientrega.</p></div>
+  <div class="box"><small>Cómo funciona</small><p style="color:var(--c)">♡ Los envíos se realizan una vez confirmado el pago.<br>♡ Te enviamos el número de guía para que rastrees tu pedido en todo momento.</p></div>
+ </div>
+</div></section>
+
+<section class="about" id="nosotras"><div class="wrap in">
+ <img src="a/eli-sentada.png" alt="Eli">
+ <div>
+  <div class="eyes">Nosotras</div>
+  <h2 class="h g">Un bolso que se ve bien y <i>facilita tu rutina</i></h2>
+  <p>Creemos que un bolso debe verse bien y facilitar tu día. Por eso elegimos diseños pensados para el uso diario, con el espacio y la practicidad para llevar desde cuadernos y libros hasta laptops y accesorios esenciales.</p>
+  <p>Elige el que más te guste y mándanos fotito para brindarte más info ♡</p>
+  <a class="btn" data-ig href="#">Pedir por Instagram</a>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <img src="a/lc-hueso.png" alt="LC"><div class="g">Gracias por tu apoyo</div>
+ <p style="margin-top:10px"><a data-ig href="#">Instagram @ladysclub.ec</a> · <a href="https://www.tiktok.com/@ladysclub.ec">TikTok @ladysclub.ec</a> · <a data-wa href="#">WhatsApp</a></p>
+ <p style="margin-top:6px;opacity:.7;font-size:13px">Guayaquil, Ecuador · Bolsos inspirados en modelos clásicos</p>
+</div></footer>
+
+<dialog id="dg"><div class="fx" id="fx"></div></dialog>
+<button class="tg" id="tg" aria-label="Cambiar tema">Tema</button>
+
+<script>
+/* ===== CONFIGURA AQUÍ ===== */
+const CONTACT={ig:'ladysclub.ec',wa:''}; // wa: número con código de país, ej. 5939XXXXXXXX
+/* ===== DATOS DE LOS BOLSOS ===== */
+const BAGS=[
+{id:'tote-pink',cat:'Tote Bags',kind:'Tote Bag',name:'Tote Bag Pink',sub:'+ estuche GRATIS',price:25,state:'out',
+ img:['a/tote1.jpg','a/tote2.jpg','a/tote3.jpg'],
+ use:'Ideal para llevar tu laptop de hasta 16 pulgadas.',
+ det:['Estuche de regalo incluido','Cierre de broche','Acolchado suave y liviano'],
+ spec:[['Medidas','30 cm de ancho × 35 de alto × 12 de lado'],['Incluye','Estuche']]},
+{id:'clasica-azul',cat:'Clásicas',kind:'Clásica Longchamp · Size L',name:'Azul Marino',price:32,state:'in',
+ img:['a/azul.png'],contain:true,
+ use:'Súper espaciosa: laptop, cuadernos, carpetas y todo lo que necesitas en tu día a día.',
+ det:['Size L (Grande)','Asas largas de hombro','Plegable y liviana'],
+ spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
+{id:'clasica-cafe',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Café',price:36,state:'in',tag:'Edición especial',
+ img:['a/cafe.jpg'],
+ use:'Edición especial Green House en tono café, con el mismo espacio de siempre.',
+ det:['Edición especial Green House','Size L (Grande)'],
+ spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
+{id:'clasica-vino',cat:'Clásicas',kind:'Clásica Longchamp · Size L',name:'Vino',price:32,state:'in',
+ img:['a/vino.jpg'],
+ use:'El tono vino que combina con todo.',
+ det:['Size L (Grande)','Asas largas de hombro'],
+ spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
+{id:'clasica-gris',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Total Gris',price:36,state:'in',tag:'Edición especial',
+ img:['a/gris.jpg'],
+ use:'Edición especial Green House en gris total.',
+ det:['Edición especial Green House','Size L (Grande)'],
+ spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
+{id:'clasica-negra',cat:'Clásicas',kind:'Clásica Longchamp · Size L',name:'Negra',price:32,state:'out',
+ img:['a/negra.jpg'],
+ use:'El color que combina con todo, con la misma capacidad grande.',
+ det:['Size L (Grande)','Asas largas de hombro'],
+ spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
+{id:'hobo-cafe',cat:'Hobo Bags',kind:'Hobo Bag',name:'Hobo Café Chocolate',price:null,state:'in',img:[],
+ use:'Descripción por completar.',det:[],spec:[['Medidas','Por completar']]},
+{id:'hobo-negra',cat:'Hobo Bags',kind:'Hobo Bag',name:'Hobo Negra',price:null,state:'in',img:[],
+ use:'Descripción por completar.',det:[],spec:[['Medidas','Por completar']]}
+];
+/* ===== LÓGICA ===== */
+const $=s=>document.querySelector(s);
+function link(kind,msg){
+ const t=encodeURIComponent(msg);
+ if(kind==='ig')return 'https://ig.me/m/'+CONTACT.ig;
+ return CONTACT.wa?'https://wa.me/'+CONTACT.wa+'?text='+t:'#';
+}
+function wire(){
+ document.querySelectorAll('[data-ig]').forEach(a=>{a.href=link('ig');a.target='_blank';a.rel='noopener'});
+ document.querySelectorAll('[data-wa]').forEach(a=>{a.href=link('wa','Hola, quiero más info');a.target='_blank';a.rel='noopener'});
+}
+const price=b=>b.price==null?'Precio por confirmar':'$'+b.price;
+function empty(){return '<div class="empty"><img src="a/eli-timida.png" alt=""><span>Foto próximamente</span></div>'}
+function cats(){return ['Todos','Totes','Hobo','Clásicas','Disponibles']}
+let flt='Todos';
+function match(b){return flt==='Todos'||(flt==='Totes'&&b.cat==='Tote Bags')||(flt==='Hobo'&&b.cat==='Hobo Bags')||(flt==='Clásicas'&&b.cat==='Clásicas')||(flt==='Disponibles'&&b.state==='in')}
+function renderFilters(){
+ $('#fl').innerHTML=cats().map(c=>`<button class="fl" aria-pressed="${c===flt}" data-f="${c}">${c}</button>`).join('');
+ $('#fl').onclick=e=>{const f=e.target.dataset.f;if(f){flt=f;renderFilters();renderGrid()}};
+}
+function renderGrid(){
+ $('#gr').innerHTML=BAGS.filter(match).map(b=>`
+ <button class="card" data-id="${b.id}" aria-label="Ver ${b.kind} ${b.name}">
+  <div class="ph">${b.img[0]?`<img class="main ${b.contain?'contain':''}" src="${b.img[0]}" alt="${b.name}" loading="lazy">`:empty()}
+   <span class="badge ${b.state==='out'?'out':''}">${b.state==='out'?'Agotado':(b.tag||'Disponible')}</span></div>
+  <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div></div>
+ </button>`).join('');
+}
+$('#gr').onclick=e=>{const c=e.target.closest('.card');if(c)openBag(c.dataset.id)};
+function openBag(id){
+ const b=BAGS.find(x=>x.id===id),dg=$('#dg');
+ const big=i=>b.img[i]?`<img class="${b.contain?'contain':''}" src="${b.img[i]}" alt="${b.name}">`:empty();
+ const out=b.state==='out';
+ const msg=(out?'Hola, quiero que me avisen cuando llegue: ':'Hola, quiero pedir: ')+b.kind+' '+b.name;
+ $('#fx').innerHTML=`
+ <div class="gal"><div class="big" id="bg">${big(0)}</div>${b.img.length>1?`<div class="thumbs">${b.img.map((s,i)=>`<button data-i="${i}" aria-label="Foto ${i+1}" aria-current="${i===0}"><img src="${s}" alt=""></button>`).join('')}</div>`:''}</div>
+ <div class="det"><button class="x" aria-label="Cerrar" id="cx">×</button>
+  <div class="eyes" style="color:var(--r)">${b.kind}</div>
+  <h3 class="g" style="font-style:italic">${b.name}${b.sub?' <small style="font-size:.5em;color:var(--r)">'+b.sub+'</small>':''}</h3>
+  <div class="pr g">${price(b)}</div>
+  <p class="u">${b.use}</p>
+  ${b.det.length?`<ol class="dt">${b.det.map((d,i)=>`<li><span>0${i+1}</span>${d}</li>`).join('')}</ol>`:''}
+  <table class="sp">${b.spec.map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('')}</table>
+  <div class="cta"><a class="btn" href="${link('ig',msg)}" target="_blank" rel="noopener">${out?'Avísame cuando llegue':'Pedir por Instagram'}</a><a class="btn alt" href="${link('wa',msg)}" target="_blank" rel="noopener">WhatsApp</a></div>
+  <p class="note">${out?'Este modelo está agotado por ahora.':'Pedido por mensaje; el pago se confirma antes del envío.'}</p>
+ </div>`;
+ $('#cx').onclick=()=>dg.close();
+ $('.thumbs')&&($('.thumbs').onclick=e=>{const t=e.target.closest('button');if(!t)return;$('#bg').innerHTML=big(+t.dataset.i);document.querySelectorAll('.thumbs button').forEach(x=>x.setAttribute('aria-current',x===t))});
+ dg.showModal();
+}
+$('#dg').addEventListener('click',e=>{if(e.target.id==='dg')e.target.close()});
+/* tema */
+function theme(){const r=document.documentElement;const d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);
+ $('#hl').src=d?'a/wm-hueso.png':'a/wm-borgona.png';$('#iso').src=d?'a/iso-hueso.png':'a/iso-borgona.png'}
+$('#tg').onclick=()=>{const r=document.documentElement;const d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark';theme()};
+matchMedia('(prefers-color-scheme:dark)').addEventListener('change',theme);
+theme();wire();renderFilters();renderGrid();
+</script></body></html>
