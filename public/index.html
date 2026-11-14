@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lady's Club Catálogo</title>
+<title>Lady&#39;s Club Catálogo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:Gaya;src:url(a/gaya-regular.otf);font-style:normal;unicode-range:U+20-7E}
 @font-face{font-family:Gaya;src:url(a/gaya-italic.otf);font-style:italic;unicode-range:U+20-7E}
 @font-face{font-family:Rafaella;src:url(a/rafaella.otf);unicode-range:U+20-7E}
-:root{--r:#C88A96;--b:#5B1632;--h:#F7F5F0;--c:#4B3621;--p:#EFD9DD;--card:#fff;--line:rgba(91,22,50,.14);--mut:#6b5560;--ig:#5B1632}
+:root{--r:#C88A96;--b:#280201;--h:#F7F5F0;--c:#4B3621;--p:#EFD9DD;--card:#fff;--line:rgba(40,2,1,.14);--mut:#6b5560;--ig:#280201}
 :root[data-theme=dark]{--h:#1c1418;--b:#F1D9DF;--c:#d9c8cd;--p:#2c1d24;--card:#261a20;--line:rgba(241,217,223,.16);--mut:#b9a2ab;--r:#D79AA6}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--h:#1c1418;--b:#F1D9DF;--c:#d9c8cd;--p:#2c1d24;--card:#261a20;--line:rgba(241,217,223,.16);--mut:#b9a2ab;--r:#D79AA6}}
 *{box-sizing:border-box;margin:0}
@@ -24,6 +24,8 @@ nav{display:flex;gap:22px;font-size:15px}nav a{text-decoration:none;opacity:.85}
 .btn.alt{background:transparent;color:var(--b);border:1.5px solid var(--b)}
 :root[data-theme=dark] .btn{color:#1c1418}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .btn{color:#1c1418}}
+:root[data-theme=dark] .btn.alt{color:var(--b);background:transparent}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .btn.alt{color:var(--b);background:transparent}}
 .hero{position:relative;overflow:hidden;background:repeating-linear-gradient(90deg,transparent 0 80px,color-mix(in srgb,var(--p) 55%,transparent) 80px 160px)}
 .hero .in{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:20px;padding:64px 0 56px}
 .eyes{letter-spacing:.34em;font-size:12px;font-weight:700;text-transform:uppercase}
@@ -38,11 +40,25 @@ section{padding:64px 0}
 h2.h{font-weight:normal;font-size:clamp(34px,5vw,54px);line-height:1.05;margin:8px 0 26px}
 h2.h i{color:var(--r)}
 .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.filters:not(.colors){margin-bottom:12px}.colors{margin-top:0}
+.cc{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:transparent;color:var(--b);border-radius:999px;padding:7px 16px 7px 10px;font:700 13px 'DM Sans',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.cc i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.25);display:inline-block}
+.cc:hover{border-color:var(--b)}.cc[aria-pressed=true]{border-color:var(--b);background:var(--p)}
+.faq .fq{max-width:760px;margin-top:26px;display:grid;gap:12px}
+.fq details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:0 22px;transition:box-shadow .25s,border-color .25s,opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:0s,0s,var(--d,0s),var(--d,0s)}
+.fq details[open]{border-color:var(--r);box-shadow:0 8px 24px rgba(40,2,1,.08)}
+.fq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font:700 16px 'DM Sans',sans-serif}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary::after{content:"+";font:400 26px/1 'DM Sans',sans-serif;color:var(--r);transition:transform .3s}
+.fq details[open] summary::after{transform:rotate(45deg)}
+.fq details p{padding:0 0 18px;margin:0;color:var(--c);line-height:1.6;animation:up .4s ease backwards}
+.fq-more{margin-top:22px}.fq-more a{color:var(--b);font-weight:700}
 .fl{border:1.5px solid var(--b);background:transparent;color:var(--b);border-radius:999px;padding:9px 20px;font:700 14px 'DM Sans',sans-serif;cursor:pointer}
 .fl[aria-pressed=true]{background:var(--b);color:var(--h)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;text-align:left;color:inherit;font:inherit;padding:0}
-.card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 12px 30px rgba(91,22,50,.16)}
+.card .pedir{margin:12px 0 2px;width:100%;padding:11px 16px;font-size:14px}
+.card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 12px 30px rgba(40,2,1,.16)}
 .ph{position:relative;aspect-ratio:4/5;background:var(--p);overflow:hidden;display:flex;align-items:center;justify-content:center}
 .ph img.main{width:100%;height:100%;object-fit:cover;display:block}
 .ph img.main.contain{object-fit:contain;padding:8%}
@@ -82,16 +98,95 @@ table.sp td{padding:9px 0;border-top:1px solid var(--line)}
 .about .in{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:center}
 .about img{width:100%;max-width:300px;margin:auto;display:block}
 .about p{font-size:19px;color:var(--c);margin-bottom:14px}
-footer{background:var(--b);color:#F7F5F0;padding:44px 0;text-align:center}
-footer .g{font-size:34px;font-style:italic}footer a{color:#EFD9DD}
+footer{background:#280201;color:#F7F5F0;padding:44px 0;text-align:center}
+footer .g{font-size:34px;font-style:italic;color:#F7F5F0}footer a{color:#EFD9DD;text-decoration:underline;text-underline-offset:3px}footer p{color:#EFD9DD}
 footer img{height:42px;margin-bottom:12px}
+/* ===== interacción ===== */
+.prog{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--r),var(--b));z-index:40}
+header{transition:box-shadow .3s}header .in{transition:height .3s}header img.logo{transition:height .3s}
+header.sm{box-shadow:0 6px 24px rgba(40,2,1,.10)}header.sm .in{height:56px}header.sm img.logo{height:30px}
+.btn{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(40,2,1,.22)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn:hover::after{transform:translateX(120%)}
+.hero .in{position:relative;z-index:1}
+.hero .eyes,.hero h1 .s,.hero h1 .t,.hero p,.hero .btn{animation:up .9s cubic-bezier(.2,.7,.2,1) backwards}
+.hero .eyes{animation-delay:.05s}.hero h1 .s{animation-delay:.15s}.hero h1 .t{animation-delay:.3s}.hero p{animation-delay:.45s}.hero .btn{animation-delay:.6s}
+@keyframes up{from{opacity:0;transform:translateY(30px)}}
+.hero .art img.iso{translate:var(--mx,0px) var(--my,0px);transition:translate .35s ease-out;animation:pop 1s .2s cubic-bezier(.3,1.4,.5,1) backwards}
+@keyframes pop{from{opacity:0;transform:scale(.6) rotate(-12deg)}}
+.hero .art img.eli{translate:calc(var(--mx,0px)*-1.4) calc(var(--my,0px)*-1.4);transition:translate .35s ease-out;transform-origin:50% 100%;animation:peek 1s 1s cubic-bezier(.3,1.5,.5,1) backwards,bob 3.2s 2s ease-in-out infinite}
+@keyframes peek{from{opacity:0;transform:translateY(60%)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-3deg)}}
+.sp-st{position:absolute;z-index:0;color:var(--r);pointer-events:none;font-size:var(--z,14px);opacity:0;animation:tw 2.8s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:.85;transform:scale(1) rotate(90deg)}}
+.mq{background:var(--b);color:var(--h);overflow:hidden;white-space:nowrap;padding:14px 0}
+.mq .tr{display:inline-flex;align-items:center;animation:mq 30s linear infinite}
+.mq span{font:italic 22px Gaya,Fraunces,serif;padding:0 22px}.mq b{color:var(--r);font-weight:400}
+.mq:hover .tr{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.on{opacity:1;transform:none}
+.filters{position:relative}
+.fl{position:relative;z-index:1;background:transparent!important;transition:color .3s}
+.fl[aria-pressed=true]{color:var(--h)}
+.filters .ind{position:absolute;z-index:0;border-radius:999px;background:var(--b);transition:left .45s cubic-bezier(.3,1.3,.5,1),top .45s,width .45s cubic-bezier(.3,1.3,.5,1)}
+.grid .card{animation:cardIn .55s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0)*70ms);transition:transform .25s ease-out,box-shadow .25s}
+@keyframes cardIn{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.card .ph img.main{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img.main{transform:scale(1.06)}
+.card .ph img.alt{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
+.card:hover .ph img.alt{opacity:1}
+.card .glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.35),transparent 55%);opacity:0;transition:opacity .3s}
+.card:hover .glare{opacity:1}
+.card .go{position:absolute;bottom:14px;right:14px;background:var(--b);color:var(--h);border-radius:999px;padding:8px 14px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transform:translateY(12px);opacity:0;transition:.3s}
+.card:hover .go,.card:focus-visible .go{transform:none;opacity:1}
+.box{transition:transform .3s,box-shadow .3s}.box:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(40,2,1,.12)}
+.about img:hover{animation:wig .7s}
+@keyframes wig{25%{transform:rotate(-7deg) scale(1.04)}50%{transform:rotate(5deg) scale(1.04)}75%{transform:rotate(-3deg)}}
+dialog[open]{animation:dg .45s cubic-bezier(.2,.9,.3,1.15)}
+@keyframes dg{from{opacity:0;transform:translateY(30px) scale(.96)}}
+dialog[open]::backdrop{animation:fd .3s}@keyframes fd{from{opacity:0}}
+.gal .big img{animation:fi .4s}@keyframes fi{from{opacity:0;transform:scale(1.04)}}
+.heart{position:fixed;pointer-events:none;z-index:60;color:var(--r);font-size:18px;margin:-10px 0 0 -8px;animation:hf .9s ease-out forwards}
+@keyframes hf{to{transform:translate(var(--hx),var(--hy)) scale(.4) rotate(var(--hr));opacity:0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 .tg{position:fixed;right:14px;bottom:14px;z-index:30;border:1px solid var(--line);background:var(--card);color:var(--b);padding:0 16px;height:40px;border-radius:999px;cursor:pointer;font:700 13px "DM Sans",sans-serif}
 @media (max-width:760px){nav{display:none}.hero .in{grid-template-columns:1fr;padding:40px 0 30px}.hero .art{max-width:280px;margin:0 auto}.fx{grid-template-columns:1fr}.about .in{grid-template-columns:1fr}.det{padding:26px 22px}}
+
+/* ===== detalle a pantalla completa ===== */
+dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;overflow:hidden;margin:0}
+.fx{height:100vh;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.gal{background:#fff;padding:0;gap:0;height:100vh;position:relative;justify-content:center}
+.gal .big{aspect-ratio:auto;flex:1;border-radius:0;background:#fff;min-height:0}
+.gal .big img{object-fit:contain;padding:4%}
+.thumbs{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);background:rgba(255,255,255,.9);padding:8px;border-radius:16px;box-shadow:0 6px 20px rgba(40,2,1,.12)}
+.det{height:100vh;overflow-y:auto;padding:56px clamp(28px,5vw,72px) 48px}
+.x{position:fixed;right:22px;top:20px;z-index:5;width:46px;height:46px;box-shadow:0 4px 14px rgba(40,2,1,.15)}
+.acc{border-top:1px solid var(--line)}
+.acc:last-of-type{border-bottom:1px solid var(--line)}
+.acc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:18px 0;font:700 15.5px 'DM Sans',sans-serif}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--b);border-bottom:2px solid var(--b);transform:rotate(45deg) translateY(-3px);transition:transform .3s}
+.acc[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
+.acc .ab{padding:0 0 20px;animation:up .4s ease backwards}
+.acc h4{font:700 15px 'DM Sans',sans-serif;margin:14px 0 6px}.acc h4:first-child{margin-top:0}
+.acc p{color:var(--c);font-size:14.5px;line-height:1.55;margin:4px 0}
+.st{display:flex;align-items:center;gap:10px;font-size:15px;margin:2px 0 4px}
+.st i{width:10px;height:10px;border-radius:50%;background:#1e9e63;flex:none}.st.no i{background:#9a8f93}
+.acc hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.acc dl{display:grid;grid-template-columns:38% 1fr;gap:0;margin:0}
+.acc dt{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);padding:10px 0;border-top:1px solid var(--line)}
+.acc dd{margin:0;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
+.acc dt:first-of-type,.acc dd:first-of-type{border-top:0}
+.det .cta{margin-top:24px}.det .cta .btn{flex:1;min-width:200px;padding:16px 24px}
+@media (max-width:760px){dialog{overflow-y:auto}.fx{height:auto;grid-template-columns:1fr}.gal{height:auto}.gal .big{aspect-ratio:4/5;flex:none}.det{height:auto;overflow:visible;padding:26px 22px 40px}.thumbs{bottom:12px}.x{right:14px;top:12px}}
 </style></head><body>
 
-<header><div class="wrap in">
+<div class="prog" id="prog"></div>
+<header id="hd"><div class="wrap in">
  <a href="#top"><img class="logo" id="hl" src="a/wm-borgona.png" alt="Lady's Club"></a>
- <nav><a href="#catalogo">Bolsos</a><a href="#envios">Envíos</a><a href="#nosotras">Nosotras</a></nav>
+ <nav><a href="#catalogo">Bolsos</a><a href="#envios">Envíos</a><a href="#preguntas">Preguntas</a><a href="#nosotras">Nosotras</a></nav>
  <a class="btn" data-ig href="#">Pedir por mensaje</a>
 </div></header>
 
@@ -106,10 +201,13 @@ footer img{height:42px;margin-bottom:12px}
  <div class="art"><img class="iso" id="iso" src="a/iso-borgona.png" alt="Isotipo Lady's Club"><img class="eli" src="a/eli-peek.png" alt="Eli, la conejita de Lady's Club"></div>
 </div></section>
 
+<div class="mq" aria-hidden="true"><div class="tr" id="mqt"></div></div>
+
 <section id="catalogo"><div class="wrap">
  <div class="eyes">El catálogo</div>
  <h2 class="h g">Nuestros <i>bolsos</i></h2>
  <div class="filters" id="fl"></div>
+ <div class="filters colors" id="cl" aria-label="Filtrar por color"></div>
  <div class="grid" id="gr"></div>
 </div></section>
 
@@ -117,10 +215,24 @@ footer img{height:42px;margin-bottom:12px}
  <div class="eyes">Envíos</div>
  <h2 class="h g">Que tu pedido llegue <i>seguro</i>, rápido y con mucho amor</h2>
  <div class="sg">
-  <div class="box"><small>Guayaquil</small><div class="big g">$3,50</div><p style="margin-top:10px;color:var(--c)">Servientrega o motorizado, bajo coordinación.</p></div>
+  <div class="box"><small>Guayaquil</small><div class="big g">$3,00</div><p style="margin-top:10px;color:var(--c)">Envíos a todo el país por Servientrega.</p></div>
   <div class="box"><small>Provincias</small><div class="big g">$7,00</div><p style="margin-top:10px;color:var(--c)">Envíos a todo el país por Servientrega.</p></div>
   <div class="box"><small>Cómo funciona</small><p style="color:var(--c)">♡ Los envíos se realizan una vez confirmado el pago.<br>♡ Te enviamos el número de guía para que rastrees tu pedido en todo momento.</p></div>
  </div>
+</div></section>
+
+<section class="faq" id="preguntas"><div class="wrap">
+ <div class="eyes">Preguntas frecuentes</div>
+ <h2 class="h g">Lo que más nos <i>preguntan</i></h2>
+ <div class="fq">
+  <details><summary>¿Cómo hago mi pedido?</summary><p>Toca <b>Pedir</b> en el bolso que te guste y escríbenos por Instagram. Te confirmamos la disponibilidad y coordinamos los datos de envío.</p></details>
+  <details style="--d:.05s"><summary>¿Cuánto cuesta el envío?</summary><p>En Guayaquil cuesta $3,00 por Servientrega. A provincias cuesta $7,00 por Servientrega.</p></details>
+  <details style="--d:.1s"><summary>¿Cuándo se envía mi pedido?</summary><p>Los envíos se realizan una vez confirmado el pago.</p></details>
+  <details style="--d:.15s"><summary>¿Cómo sé dónde está mi pedido?</summary><p>Te enviamos el número de guía para que lo rastrees en todo momento.</p></details>
+  <details style="--d:.2s"><summary>¿Qué pasa si el bolso está agotado?</summary><p>Escríbenos por Instagram y te avisamos cuando vuelva a estar disponible.</p></details>
+  <details style="--d:.25s"><summary>¿Qué cabe en el bolso?</summary><p>Los totes llevan laptop de hasta 16 pulgadas. Las clásicas Size L son espaciosas para laptop, cuadernos y carpetas, y las hobo bags para laptop de hasta 13 pulgadas. En cada bolso encuentras las medidas exactas.</p></details>
+ </div>
+ <p class="fq-more">¿Otra duda? <a data-ig href="#">Escríbenos por Instagram</a> ♡</p>
 </div></section>
 
 <section class="about" id="nosotras"><div class="wrap in">
@@ -129,7 +241,7 @@ footer img{height:42px;margin-bottom:12px}
   <div class="eyes">Nosotras</div>
   <h2 class="h g">Un bolso que se ve bien y <i>facilita tu rutina</i></h2>
   <p>Creemos que un bolso debe verse bien y facilitar tu día. Por eso elegimos diseños pensados para el uso diario, con el espacio y la practicidad para llevar desde cuadernos y libros hasta laptops y accesorios esenciales.</p>
-  <p>Elige el que más te guste y mándanos fotito para brindarte más info ♡</p>
+  <p>Elige el que más te guste y escríbenos: te ayudamos a escoger el tuyo ♡</p>
   <a class="btn" data-ig href="#">Pedir por Instagram</a>
  </div>
 </div></section>
@@ -138,7 +250,7 @@ footer img{height:42px;margin-bottom:12px}
 <footer><div class="wrap">
  <img src="a/lc-hueso.png" alt="LC"><div class="g">Gracias por tu apoyo</div>
  <p style="margin-top:10px"><a data-ig href="#">Instagram @ladysclub.ec</a> · <a href="https://www.tiktok.com/@ladysclub.ec">TikTok @ladysclub.ec</a> · <a data-wa href="#">WhatsApp</a></p>
- <p style="margin-top:6px;opacity:.7;font-size:13px">Guayaquil, Ecuador · Bolsos inspirados en modelos clásicos</p>
+ <p style="margin-top:6px;font-size:13px;color:#E6D0D5">Guayaquil, Ecuador · Bolsos trendy</p>
 </div></footer>
 
 <dialog id="dg"><div class="fx" id="fx"></div></dialog>
@@ -149,40 +261,45 @@ footer img{height:42px;margin-bottom:12px}
 const CONTACT={ig:'ladysclub.ec',wa:''}; // wa: número con código de país, ej. 5939XXXXXXXX
 /* ===== DATOS DE LOS BOLSOS ===== */
 const BAGS=[
-{id:'tote-pink',cat:'Tote Bags',kind:'Tote Bag',name:'Tote Bag Pink',sub:'+ estuche GRATIS',price:25,state:'out',
- img:['a/tote1.jpg','a/tote2.jpg','a/tote3.jpg'],
+{id:'tote-pink',color:'Rosa',cat:'Tote Bags',kind:'Tote Bag',name:'Tote Bag Pink',sub:'+ estuche GRATIS',price:25,state:'out',
+ img:['a/w_tote-pink.jpg'],
  use:'Ideal para llevar tu laptop de hasta 16 pulgadas.',
  det:['Estuche de regalo incluido','Cierre de broche','Acolchado suave y liviano'],
  spec:[['Medidas','30 cm de ancho × 35 de alto × 12 de lado'],['Incluye','Estuche']]},
-{id:'clasica-azul',cat:'Clásicas',kind:'Clásica Longchamp · Size L',name:'Azul Marino',price:32,state:'in',
- img:['a/azul.png'],contain:true,
+{id:'tote-negra',color:'Negro',cat:'Tote Bags',kind:'Tote Bag',name:'Tote Bag Black',sub:'+ estuche GRATIS',price:25,state:'out',
+ img:['a/w_tote-negra.jpg'],
+ use:'Ideal para llevar tu laptop de hasta 16 pulgadas.',
+ det:['Estuche de regalo incluido','Cierre de broche','Acolchado suave y liviano'],
+ spec:[['Medidas','30 cm de ancho × 35 de alto × 12 de lado'],['Incluye','Estuche']]},
+{id:'clasica-azul',herraje:'Dorado',color:'Azul',cat:'Clásicas',kind:'Clásica Longchamp · Size L',name:'Azul Marino',price:32,state:'in',
+ img:['a/w_clasica-azul.jpg'],
  use:'Súper espaciosa: laptop, cuadernos, carpetas y todo lo que necesitas en tu día a día.',
  det:['Size L (Grande)','Asas largas de hombro','Plegable y liviana'],
  spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
-{id:'clasica-cafe',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Café',price:36,state:'in',tag:'Edición especial',
- img:['a/cafe.jpg'],
- use:'Edición especial Green House en tono café, con el mismo espacio de siempre.',
- det:['Edición especial Green House','Size L (Grande)'],
- spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
-{id:'clasica-vino',cat:'Clásicas',kind:'Clásica Longchamp · Size L',name:'Vino',price:32,state:'in',
- img:['a/vino.jpg'],
- use:'El tono vino que combina con todo.',
- det:['Size L (Grande)','Asas largas de hombro'],
- spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
-{id:'clasica-gris',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Total Gris',price:36,state:'in',tag:'Edición especial',
- img:['a/gris.jpg'],
- use:'Edición especial Green House en gris total.',
- det:['Edición especial Green House','Size L (Grande)'],
- spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
-{id:'clasica-negra',cat:'Clásicas',kind:'Clásica Longchamp · Size L',name:'Negra',price:32,state:'out',
- img:['a/negra.jpg'],
+{id:'clasica-negra',herraje:'Dorado',color:'Negro',cat:'Clásicas',kind:'Clásica Longchamp · Size L',name:'Negra',price:32,state:'out',
+ img:['a/w_clasica-negra.jpg'],
  use:'El color que combina con todo, con la misma capacidad grande.',
  det:['Size L (Grande)','Asas largas de hombro'],
  spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
-{id:'hobo-cafe',cat:'Hobo Bags',kind:'Hobo Bag',name:'Hobo Café Chocolate',price:null,state:'in',img:[],
- use:'Descripción por completar.',det:[],spec:[['Medidas','Por completar']]},
-{id:'hobo-negra',cat:'Hobo Bags',kind:'Hobo Bag',name:'Hobo Negra',price:null,state:'in',img:[],
- use:'Descripción por completar.',det:[],spec:[['Medidas','Por completar']]}
+{id:'clasica-cafe',herraje:'Dorado',color:'Café',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Café',price:36,state:'in',tag:'Edición especial',
+ img:['a/w_clasica-cafe.jpg'],
+ use:'Edición especial Green House en tono café, con el mismo espacio de siempre.',
+ det:['Edición especial Green House','Size L (Grande)'],
+ spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
+{id:'clasica-rosa',herraje:'Plateado',color:'Rosa',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Rosa',price:36,state:'out',tag:'Edición especial',
+ img:['a/w_clasica-rosa.jpg'],
+ use:'Edición especial Green House en rosa suave, con el mismo espacio de siempre.',
+ det:['Edición especial Green House','Size L (Grande)','Asas largas de hombro'],
+ spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
+{id:'clasica-gris',herraje:'Plateado',color:'Gris',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Total Gris',price:36,state:'out',tag:'Edición especial',
+ img:['a/w_clasica-gris.jpg'],
+ use:'Edición especial Green House en gris total.',
+ det:['Edición especial Green House','Size L (Grande)'],
+ spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
+{id:'hobo-cafe',color:'Café',cat:'Hobo Bags',kind:'Hobo Bag',name:'Hobo Café Chocolate',price:25,state:'in',img:['a/w_hobo-cafe.jpg'],
+ use:'Un bolso de hombro de forma suave y relajada, con el espacio justo para tu día: laptop, cuaderno y lo que no puede faltar. Combina con todo y va con cualquier look.',det:['Asa de hombro','Forma amplia y suave','Espacio para laptop de hasta 13 pulgadas'],spec:[['Medidas','32 cm de ancho × 38 cm de alto × 12 cm de profundidad']]},
+{id:'hobo-negra',color:'Negro',cat:'Hobo Bags',kind:'Hobo Bag',name:'Hobo Negra',price:25,state:'in',img:['a/w_hobo-negra.jpg'],
+ use:'Un bolso de hombro de forma suave y relajada, con el espacio justo para tu día: laptop, cuaderno y lo que no puede faltar. Un negro que combina con todo.',det:['Asa de hombro','Forma amplia y suave','Espacio para laptop de hasta 13 pulgadas'],spec:[['Medidas','32 cm de ancho × 38 cm de alto × 12 cm de profundidad']]}
 ];
 /* ===== LÓGICA ===== */
 const $=s=>document.querySelector(s);
@@ -198,21 +315,62 @@ function wire(){
 const price=b=>b.price==null?'Precio por confirmar':'$'+b.price;
 function empty(){return '<div class="empty"><img src="a/eli-timida.png" alt=""><span>Foto próximamente</span></div>'}
 function cats(){return ['Todos','Totes','Hobo','Clásicas','Disponibles']}
-let flt='Todos';
-function match(b){return flt==='Todos'||(flt==='Totes'&&b.cat==='Tote Bags')||(flt==='Hobo'&&b.cat==='Hobo Bags')||(flt==='Clásicas'&&b.cat==='Clásicas')||(flt==='Disponibles'&&b.state==='in')}
+let flt='Todos',cf='Todos';
+const CDOT={Negro:'#1b1b1b',Café:'#5a3a29',Azul:'#1f2a5a',Rosa:'#efb6c4',Gris:'#6b6b6b'};
+function match(b){if(cf!=='Todos'&&b.color!==cf)return false;return flt==='Todos'||(flt==='Totes'&&b.cat==='Tote Bags')||(flt==='Hobo'&&b.cat==='Hobo Bags')||(flt==='Clásicas'&&b.cat==='Clásicas')||(flt==='Disponibles'&&b.state==='in')}
 function renderFilters(){
- $('#fl').innerHTML=cats().map(c=>`<button class="fl" aria-pressed="${c===flt}" data-f="${c}">${c}</button>`).join('');
- $('#fl').onclick=e=>{const f=e.target.dataset.f;if(f){flt=f;renderFilters();renderGrid()}};
+ $('#fl').innerHTML='<span class="ind"></span>'+cats().map(c=>`<button class="fl" aria-pressed="${c===flt}" data-f="${c}">${c}</button>`).join('');
+ $('#fl').onclick=e=>{const f=e.target.dataset.f;if(f&&f!==flt){flt=f;document.querySelectorAll('.fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===flt));moveInd();renderGrid()}};
+ requestAnimationFrame(moveInd);
 }
+
+function renderColors(){
+ const cs=['Todos'].concat(Object.keys(CDOT).filter(c=>BAGS.some(b=>b.color===c)));
+ $('#cl').innerHTML=cs.map(c=>`<button class="cc" aria-pressed="${c===cf}" data-c="${c}">${c==='Todos'?'':`<i style="background:${CDOT[c]}"></i>`}${c==='Todos'?'Todos los colores':c}</button>`).join('');
+ $('#cl').onclick=e=>{const b=e.target.closest('.cc');if(!b)return;cf=b.dataset.c;document.querySelectorAll('.cc').forEach(x=>x.setAttribute('aria-pressed',x.dataset.c===cf));renderGrid()};
+}
+function moveInd(){const b=document.querySelector('.fl[aria-pressed=true]'),s=document.querySelector('#fl .ind');if(!b||!s)return;Object.assign(s.style,{left:b.offsetLeft+'px',top:b.offsetTop+'px',width:b.offsetWidth+'px',height:b.offsetHeight+'px'})}
+addEventListener('resize',moveInd);
+document.fonts&&document.fonts.ready.then(moveInd);
 function renderGrid(){
- $('#gr').innerHTML=BAGS.filter(match).map(b=>`
- <button class="card" data-id="${b.id}" aria-label="Ver ${b.kind} ${b.name}">
-  <div class="ph">${b.img[0]?`<img class="main ${b.contain?'contain':''}" src="${b.img[0]}" alt="${b.name}" loading="lazy">`:empty()}
+ $('#gr').innerHTML=BAGS.filter(match).sort((x,y)=>(x.state==='out')-(y.state==='out')).map((b,i)=>`
+ <div class="card" role="button" tabindex="0" style="--i:${i}" data-id="${b.id}" aria-label="Ver ${b.kind} ${b.name}">
+  <div class="ph">${b.img[0]?`<img class="main ${b.contain?'contain':''}" src="${b.img[0]}" alt="${b.name}" loading="lazy">`:empty()}${b.img[1]?`<img class="alt" src="${b.img[1]}" alt="" loading="lazy">`:''}<span class="glare"></span><span class="go">Ver detalles</span>
    <span class="badge ${b.state==='out'?'out':''}">${b.state==='out'?'Agotado':(b.tag||'Disponible')}</span></div>
-  <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div></div>
- </button>`).join('');
+  <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div>${b.state==='in'?`<a class="btn pedir" href="${link('ig','Hola, quiero pedir: '+b.kind+' '+b.name)}" target="_blank" rel="noopener">Pedir</a>`:''}</div>
+ </div>`).join('');
 }
-$('#gr').onclick=e=>{const c=e.target.closest('.card');if(c)openBag(c.dataset.id)};
+$('#gr').onclick=e=>{if(e.target.closest('.pedir'))return;const c=e.target.closest('.card');if(c)openBag(c.dataset.id)};
+$('#gr').onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('card')){e.preventDefault();openBag(e.target.dataset.id)}};
+function prodRows(b){
+ const med=(b.spec.find(r=>r[0]==='Medidas')||[])[1];
+ const r=[];
+ if(med)r.push(['Dimensiones',med]);
+ if(b.cat==='Tote Bags'){
+  r.push(['Capacidad','Laptop de hasta 16 pulgadas']);
+  r.push(['Cierre','Broche']);
+  r.push(['Acabado','Acolchado suave y liviano']);
+  r.push(['Asas','Dos asas acolchadas']);
+  const inc=(b.spec.find(x=>x[0]==='Incluye')||[])[1];if(inc)r.push(['Incluye',inc+' de regalo']);
+  return r;
+ }
+ if(b.cat==='Hobo Bags'){
+  r.push(['Capacidad','Laptop de hasta 13 pulgadas']);
+  r.push(['Asa','Asa de hombro']);
+  r.push(['Forma','Amplia y suave']);
+  return r;
+ }
+ if(b.capacidad)r.push(['Capacidad',b.capacidad]);
+ r.push(['Material','Nylon']);
+ if(b.herraje)r.push(['Herraje',b.herraje]);
+ r.push(['Cierre','Cremallera']);
+ r.push(['Detalles exteriores','Solapa con broche frontal y asas largas de hombro']);
+ if(b.asa)r.push(['Altura de asa',b.asa]);
+ r.push(['Detalles del interior','2 bolsillos sobrepuestos']);
+ r.push(['Forro','Sin forro']);
+ r.push(['Revestimiento','Nylon']);
+ return r;
+}
 function openBag(id){
  const b=BAGS.find(x=>x.id===id),dg=$('#dg');
  const big=i=>b.img[i]?`<img class="${b.contain?'contain':''}" src="${b.img[i]}" alt="${b.name}">`:empty();
@@ -227,7 +385,17 @@ function openBag(id){
   <p class="u">${b.use}</p>
   ${b.det.length?`<ol class="dt">${b.det.map((d,i)=>`<li><span>0${i+1}</span>${d}</li>`).join('')}</ol>`:''}
   <table class="sp">${b.spec.map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('')}</table>
-  <div class="cta"><a class="btn" href="${link('ig',msg)}" target="_blank" rel="noopener">${out?'Avísame cuando llegue':'Pedir por Instagram'}</a><a class="btn alt" href="${link('wa',msg)}" target="_blank" rel="noopener">WhatsApp</a></div>
+  <details class="acc"><summary>Disponibilidad y opciones de entrega</summary><div class="ab">
+   <h4>Entrega a domicilio</h4>
+   <div class="st ${out?'no':''}"><i></i>${out?'Agotado por ahora.':'Disponible.'}</div>
+   <p>Por Servientrega. Los pedidos confirmados se entregan en un plazo de 24 a 28 horas (Guayaquil $3,00 · provincias $7,00).</p>
+   <hr>
+   <h4>Entrega en punto</h4>
+   <div class="st ${out?'no':''}"><i></i>${out?'Agotado por ahora.':'Disponible.'}</div>
+   <p>Afuera de la ESPOL, los días martes, miércoles y jueves.</p>
+  </div></details>
+  ${prodRows(b).length>1?`<details class="acc"><summary>Detalles del producto</summary><div class="ab"><dl>${prodRows(b).map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl></div></details>`:''}
+  <div class="cta"><a class="btn" href="${link('ig',msg)}" target="_blank" rel="noopener">${out?'Avísame cuando llegue':'Pedir por Instagram'}</a>${CONTACT.wa?`<a class="btn alt" href="${link('wa',msg)}" target="_blank" rel="noopener">WhatsApp</a>`:''}</div>
   <p class="note">${out?'Este modelo está agotado por ahora.':'Pedido por mensaje; el pago se confirma antes del envío.'}</p>
  </div>`;
  $('#cx').onclick=()=>dg.close();
@@ -240,5 +408,37 @@ function theme(){const r=document.documentElement;const d=r.dataset.theme==='dar
  $('#hl').src=d?'a/wm-hueso.png':'a/wm-borgona.png';$('#iso').src=d?'a/iso-hueso.png':'a/iso-borgona.png'}
 $('#tg').onclick=()=>{const r=document.documentElement;const d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark';theme()};
 matchMedia('(prefers-color-scheme:dark)').addEventListener('change',theme);
-theme();wire();renderFilters();renderGrid();
+theme();wire();renderFilters();renderColors();renderGrid();
+/* ===== INTERACCIÓN ===== */
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const hd=$('#hd'),pg=$('#prog');
+function onScroll(){const h=document.documentElement;const p=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);pg.style.transform='scaleX('+p+')';hd.classList.toggle('sm',h.scrollTop>40)}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+/* aparecer al hacer scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('section:not(.hero) .eyes,h2.h,.about img,.about p').forEach(el=>{el.classList.add('rv');io.observe(el)});
+document.querySelectorAll('.fq details').forEach(el=>{el.classList.add('rv');io.observe(el)});
+document.querySelectorAll('.box').forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--d',(i*.12)+'s');io.observe(el)});
+/* cinta animada */
+const words=['Envíos a todo Ecuador','Pedido por mensaje','Edición especial Green House','Espacio para tu laptop','Pensados para tu rutina'];
+const chunk=words.map(w=>'<span>'+w+'</span><b>✦</b>').join('');
+$('#mqt').innerHTML=chunk+chunk+chunk+chunk;
+/* hero: estrellitas + parallax */
+const hero=$('.hero');
+for(let i=0;i<14;i++){const s=document.createElement('span');s.className='sp-st';s.textContent='✦';s.style.cssText='left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;--z:'+(8+Math.random()*14)+'px;animation-delay:'+(Math.random()*3)+'s';hero.appendChild(s)}
+if(!RM)hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;hero.style.setProperty('--mx',(x*-24)+'px');hero.style.setProperty('--my',(y*-18)+'px')});
+/* tarjetas: inclinación 3D */
+const gr=$('#gr');
+gr.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'||RM)return;const c=e.target.closest('.card');if(!c)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.transform='perspective(800px) rotateX('+((.5-y)*8)+'deg) rotateY('+((x-.5)*10)+'deg) translateY(-4px)';c.style.setProperty('--gx',(x*100)+'%');c.style.setProperty('--gy',(y*100)+'%')});
+gr.addEventListener('pointerout',e=>{const c=e.target.closest('.card');if(c&&!c.contains(e.relatedTarget))c.style.transform=''});
+/* galería: flechas y swipe */
+function step(d){const t=[...document.querySelectorAll('.thumbs button')];if(!t.length)return;let i=t.findIndex(x=>x.getAttribute('aria-current')==='true');i=(i+d+t.length)%t.length;t[i].click()}
+const dgl=$('#dg');let tx=0;
+dgl.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+dgl.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+dgl.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50&&e.target.closest('.gal'))step(dx<0?1:-1)},{passive:true});
+/* corazoncitos al pedir */
+document.addEventListener('click',e=>{const b=e.target.closest('.btn');if(!b||RM)return;const host=b.closest('dialog')||document.body;for(let i=0;i<8;i++){const h=document.createElement('span');h.className='heart';h.textContent='♡';const a=Math.random()*Math.PI*2,d=40+Math.random()*50;h.style.cssText='left:'+e.clientX+'px;top:'+e.clientY+'px;--hx:'+(Math.cos(a)*d)+'px;--hy:'+(Math.sin(a)*d-30)+'px;--hr:'+(Math.random()*90-45)+'deg';host.appendChild(h);setTimeout(()=>h.remove(),950)}});
 </script></body></html>
+
+</body></html>
