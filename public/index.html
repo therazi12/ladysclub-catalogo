@@ -66,6 +66,11 @@ h2.h i{color:var(--r)}
 .empty img{width:90px;opacity:.85}
 .badge{position:absolute;top:14px;left:14px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:7px 13px;border-radius:999px;background:var(--h);color:var(--b)}
 .badge.out{background:var(--b);color:var(--h)}
+.badge.pre{background:var(--r);color:#280201}
+.eta{font-size:13px;color:var(--c);margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}.eta i{width:7px;height:7px;border-radius:50%;background:var(--r);flex:none;animation:lat 1.8s ease-in-out infinite}.eta b{color:var(--b);font-weight:700}
+@keyframes lat{50%{opacity:.35;transform:scale(.8)}}
+.st.pre i{background:var(--r)}
+@media (prefers-reduced-motion:reduce){.eta i{animation:none}}
 .info{padding:18px 20px 22px}
 .info .n{font-size:26px;line-height:1.1}.info .n.g{font-style:italic}
 .info .k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--r);font-weight:700;margin-bottom:4px}
@@ -229,6 +234,7 @@ dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;o
   <details style="--d:.05s"><summary>¿Cuánto cuesta el envío?</summary><p>En Guayaquil cuesta $3,00 por Servientrega. A provincias cuesta $7,00 por Servientrega.</p></details>
   <details style="--d:.1s"><summary>¿Cuándo se envía mi pedido?</summary><p>Los envíos se realizan una vez confirmado el pago.</p></details>
   <details style="--d:.15s"><summary>¿Cómo sé dónde está mi pedido?</summary><p>Te enviamos el número de guía para que lo rastrees en todo momento.</p></details>
+  <details style="--d:.18s"><summary>¿Cómo funciona la reserva?</summary><p>Los bolsos con la etiqueta «Resérvalo» ya vienen en camino. Apartas el tuyo con $5, que se descuentan del precio, y pagas el resto cuando llegue. Si el bolso no llega, te devolvemos los $5. Si cancelas la reserva, el anticipo no se devuelve.</p></details>
   <details style="--d:.2s"><summary>¿Qué pasa si el bolso está agotado?</summary><p>Escríbenos por Instagram y te avisamos cuando vuelva a estar disponible.</p></details>
   <details style="--d:.25s"><summary>¿Qué cabe en el bolso?</summary><p>Los totes llevan laptop de hasta 16 pulgadas. Las clásicas Size L son espaciosas para laptop, cuadernos y carpetas, y las hobo bags para laptop de hasta 13 pulgadas. En cada bolso encuentras las medidas exactas.</p></details>
  </div>
@@ -261,12 +267,12 @@ dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;o
 const CONTACT={ig:'ladysclub.ec',wa:''}; // wa: número con código de país, ej. 5939XXXXXXXX
 /* ===== DATOS DE LOS BOLSOS ===== */
 const BAGS=[
-{id:'tote-pink',color:'Rosa',cat:'Tote Bags',kind:'Tote Bag',name:'Tote Bag Pink',sub:'+ estuche GRATIS',price:25,state:'out',
+{id:'tote-pink',color:'Rosa',cat:'Tote Bags',kind:'Tote Bag',name:'Tote Bag Pink',sub:'+ estuche GRATIS',price:25,state:'pre',eta:'2026-11-25',
  img:['a/w_tote-pink.jpg'],
  use:'Ideal para llevar tu laptop de hasta 16 pulgadas.',
  det:['Estuche de regalo incluido','Cierre de broche','Acolchado suave y liviano'],
  spec:[['Medidas','30 cm de ancho × 35 de alto × 12 de lado'],['Incluye','Estuche']]},
-{id:'tote-negra',color:'Negro',cat:'Tote Bags',kind:'Tote Bag',name:'Tote Bag Black',sub:'+ estuche GRATIS',price:25,state:'out',
+{id:'tote-negra',color:'Negro',cat:'Tote Bags',kind:'Tote Bag',name:'Tote Bag Black',sub:'+ estuche GRATIS',price:25,state:'pre',eta:'2026-11-25',
  img:['a/w_tote-negra.jpg'],
  use:'Ideal para llevar tu laptop de hasta 16 pulgadas.',
  det:['Estuche de regalo incluido','Cierre de broche','Acolchado suave y liviano'],
@@ -286,12 +292,12 @@ const BAGS=[
  use:'Edición especial Green House en tono café, con el mismo espacio de siempre.',
  det:['Edición especial Green House','Size L (Grande)'],
  spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
-{id:'clasica-rosa',herraje:'Plateado',color:'Rosa',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Rosa',price:36,state:'out',tag:'Edición especial',
+{id:'clasica-rosa',herraje:'Plateado',color:'Rosa',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Rosa',price:36,state:'pre',eta:'2026-11-25',tag:'Edición especial',
  img:['a/w_clasica-rosa.jpg'],
  use:'Edición especial Green House en rosa suave, con el mismo espacio de siempre.',
  det:['Edición especial Green House','Size L (Grande)','Asas largas de hombro'],
  spec:[['Medidas','31 cm de alto × 48 cm de ancho (parte superior) / 31 cm (base) × 19 cm de profundidad']]},
-{id:'clasica-gris',herraje:'Plateado',color:'Gris',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Total Gris',price:36,state:'out',tag:'Edición especial',
+{id:'clasica-gris',herraje:'Plateado',color:'Gris',cat:'Clásicas',kind:'Clásica Longchamp · Green House',name:'Total Gris',price:36,state:'pre',eta:'2026-11-25',tag:'Edición especial',
  img:['a/w_clasica-gris.jpg'],
  use:'Edición especial Green House en gris total.',
  det:['Edición especial Green House','Size L (Grande)'],
@@ -314,10 +320,19 @@ function wire(){
 }
 const price=b=>b.price==null?'Precio por confirmar':'$'+b.price;
 function empty(){return '<div class="empty"><img src="a/eli-timida.png" alt=""><span>Foto próximamente</span></div>'}
-function cats(){return ['Todos','Totes','Hobo','Clásicas','Disponibles']}
+function cats(){return ['Todos','Totes','Hobo','Clásicas','Disponibles','Para reservar']}
+const ANT=5;
+function etaTxt(b){
+ const wk=d=>{const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-((x.getDay()+6)%7));return x};
+ const p=b.eta.split('-').map(Number),e=new Date(p[0],p[1]-1,p[2]),t=new Date();
+ if(e<new Date(t.getFullYear(),t.getMonth(),t.getDate()))return 'Llega en estos días';
+ const n=Math.round((wk(e)-wk(t))/6048e5);
+ return n<=0?'Llega esta semana':n===1?'Llega la próxima semana':'Llega en unas '+n+' semanas';
+}
+const ord=b=>b.state==='in'?0:b.state==='pre'?1:2;
 let flt='Todos',cf='Todos';
 const CDOT={Negro:'#1b1b1b',Café:'#5a3a29',Azul:'#1f2a5a',Rosa:'#efb6c4',Gris:'#6b6b6b'};
-function match(b){if(cf!=='Todos'&&b.color!==cf)return false;return flt==='Todos'||(flt==='Totes'&&b.cat==='Tote Bags')||(flt==='Hobo'&&b.cat==='Hobo Bags')||(flt==='Clásicas'&&b.cat==='Clásicas')||(flt==='Disponibles'&&b.state==='in')}
+function match(b){if(cf!=='Todos'&&b.color!==cf)return false;return flt==='Todos'||(flt==='Totes'&&b.cat==='Tote Bags')||(flt==='Hobo'&&b.cat==='Hobo Bags')||(flt==='Clásicas'&&b.cat==='Clásicas')||(flt==='Disponibles'&&b.state==='in')||(flt==='Para reservar'&&b.state==='pre')}
 function renderFilters(){
  $('#fl').innerHTML='<span class="ind"></span>'+cats().map(c=>`<button class="fl" aria-pressed="${c===flt}" data-f="${c}">${c}</button>`).join('');
  $('#fl').onclick=e=>{const f=e.target.dataset.f;if(f&&f!==flt){flt=f;document.querySelectorAll('.fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===flt));moveInd();renderGrid()}};
@@ -333,11 +348,11 @@ function moveInd(){const b=document.querySelector('.fl[aria-pressed=true]'),s=do
 addEventListener('resize',moveInd);
 document.fonts&&document.fonts.ready.then(moveInd);
 function renderGrid(){
- $('#gr').innerHTML=BAGS.filter(match).sort((x,y)=>(x.state==='out')-(y.state==='out')).map((b,i)=>`
+ $('#gr').innerHTML=BAGS.filter(match).sort((x,y)=>ord(x)-ord(y)).map((b,i)=>`
  <div class="card" role="button" tabindex="0" style="--i:${i}" data-id="${b.id}" aria-label="Ver ${b.kind} ${b.name}">
   <div class="ph">${b.img[0]?`<img class="main ${b.contain?'contain':''}" src="${b.img[0]}" alt="${b.name}" loading="lazy">`:empty()}${b.img[1]?`<img class="alt" src="${b.img[1]}" alt="" loading="lazy">`:''}<span class="glare"></span><span class="go">Ver detalles</span>
-   <span class="badge ${b.state==='out'?'out':''}">${b.state==='out'?'Agotado':(b.tag||'Disponible')}</span></div>
-  <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div>${b.state==='in'?`<a class="btn pedir" href="${link('ig','Hola, quiero pedir: '+b.kind+' '+b.name)}" target="_blank" rel="noopener">Pedir</a>`:''}</div>
+   <span class="badge ${b.state==='out'?'out':b.state==='pre'?'pre':''}">${b.state==='out'?'Agotado':b.state==='pre'?'Resérvalo':(b.tag||'Disponible')}</span></div>
+  <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div>${b.state==='in'?`<a class="btn pedir" href="${link('ig','Hola, quiero pedir: '+b.kind+' '+b.name)}" target="_blank" rel="noopener">Pedir</a>`:b.state==='pre'?`<div class="eta"><i></i><b>${etaTxt(b)}</b>${b.cupos?`<span>· ${b.cupos===1?'Queda 1':'Quedan '+b.cupos}</span>`:''}</div><a class="btn pedir" href="${link('ig','Hola, quiero reservar: '+b.kind+' '+b.name)}" target="_blank" rel="noopener">Reservar con $${ANT}</a>`:''}</div>
  </div>`).join('');
 }
 $('#gr').onclick=e=>{if(e.target.closest('.pedir'))return;const c=e.target.closest('.card');if(c)openBag(c.dataset.id)};
@@ -375,7 +390,9 @@ function openBag(id){
  const b=BAGS.find(x=>x.id===id),dg=$('#dg');
  const big=i=>b.img[i]?`<img class="${b.contain?'contain':''}" src="${b.img[i]}" alt="${b.name}">`:empty();
  const out=b.state==='out';
- const msg=(out?'Hola, quiero que me avisen cuando llegue: ':'Hola, quiero pedir: ')+b.kind+' '+b.name;
+ const pre=b.state==='pre';
+ const msg=(pre?'Hola, quiero reservar: ':out?'Hola, quiero que me avisen cuando llegue: ':'Hola, quiero pedir: ')+b.kind+' '+b.name;
+ const stt=`<div class="st ${pre?'pre':out?'no':''}"><i></i>${pre?etaTxt(b)+'. Resérvalo con $'+ANT+'.':out?'Agotado por ahora.':'Disponible.'}</div>`;
  $('#fx').innerHTML=`
  <div class="gal"><div class="big" id="bg">${big(0)}</div>${b.img.length>1?`<div class="thumbs">${b.img.map((s,i)=>`<button data-i="${i}" aria-label="Foto ${i+1}" aria-current="${i===0}"><img src="${s}" alt=""></button>`).join('')}</div>`:''}</div>
  <div class="det"><button class="x" aria-label="Cerrar" id="cx">×</button>
@@ -387,16 +404,16 @@ function openBag(id){
   <table class="sp">${b.spec.map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('')}</table>
   <details class="acc"><summary>Disponibilidad y opciones de entrega</summary><div class="ab">
    <h4>Entrega a domicilio</h4>
-   <div class="st ${out?'no':''}"><i></i>${out?'Agotado por ahora.':'Disponible.'}</div>
-   <p>Por Servientrega. Los pedidos confirmados se entregan en un plazo de 24 a 28 horas (Guayaquil $3,00 · provincias $7,00).</p>
+   ${stt}
+   <p>${pre?'Por Servientrega, apenas llegue tu bolso (Guayaquil $3,00 · provincias $7,00).':'Por Servientrega. Los pedidos confirmados se entregan en un plazo de 24 a 28 horas (Guayaquil $3,00 · provincias $7,00).'}</p>
    <hr>
    <h4>Entrega en punto</h4>
-   <div class="st ${out?'no':''}"><i></i>${out?'Agotado por ahora.':'Disponible.'}</div>
+   ${stt}
    <p>Afuera de la ESPOL, los días martes, miércoles y jueves.</p>
   </div></details>
   ${prodRows(b).length>1?`<details class="acc"><summary>Detalles del producto</summary><div class="ab"><dl>${prodRows(b).map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl></div></details>`:''}
-  <div class="cta"><a class="btn" href="${link('ig',msg)}" target="_blank" rel="noopener">${out?'Avísame cuando llegue':'Pedir por Instagram'}</a>${CONTACT.wa?`<a class="btn alt" href="${link('wa',msg)}" target="_blank" rel="noopener">WhatsApp</a>`:''}</div>
-  <p class="note">${out?'Este modelo está agotado por ahora.':'Pedido por mensaje; el pago se confirma antes del envío.'}</p>
+  <div class="cta"><a class="btn" href="${link('ig',msg)}" target="_blank" rel="noopener">${pre?'Reservar con $'+ANT:out?'Avísame cuando llegue':'Pedir por Instagram'}</a>${CONTACT.wa?`<a class="btn alt" href="${link('wa',msg)}" target="_blank" rel="noopener">WhatsApp</a>`:''}</div>
+  <p class="note">${pre?`${etaTxt(b)}. Apartas el tuyo con $${ANT}, que se descuentan del precio: pagas los $${b.price-ANT} restantes cuando llegue.${b.cupos?' '+(b.cupos===1?'Queda 1 para reservar.':'Quedan '+b.cupos+' para reservar.'):''}`:out?'Este modelo está agotado por ahora.':'Pedido por mensaje; el pago se confirma antes del envío.'}</p>
  </div>`;
  $('#cx').onclick=()=>dg.close();
  $('.thumbs')&&($('.thumbs').onclick=e=>{const t=e.target.closest('button');if(!t)return;$('#bg').innerHTML=big(+t.dataset.i);document.querySelectorAll('.thumbs button').forEach(x=>x.setAttribute('aria-current',x===t))});
