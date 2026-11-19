@@ -530,7 +530,7 @@ const ACCTS=[
 const norm=t=>(t||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
 function shipCost(prov,city){if(!prov)return null;if(prov==='Guayas')return norm(city).includes('guayaquil')?SHIP.guayaquil:SHIP.guayas;return SHIP.pais}
 let CART=[];try{CART=JSON.parse(localStorage.getItem('lc_cart')||'[]').filter(x=>BAGS.some(b=>b.id===x.id&&b.state!=='out'))}catch(e){}
-let CK={step:1,prov:'',city:'',name:'',ci:'',tel:'',addr:'',note:'',pay:'tr',code:''};
+let CK={step:1,prov:'',city:'',name:'',ci:'',tel:'',email:'',addr:'',note:'',pay:'tr',code:''};
 const save=()=>{try{localStorage.setItem('lc_cart',JSON.stringify(CART))}catch(e){}};
 const bag=id=>BAGS.find(b=>b.id===id);
 const m$=n=>'$'+(Math.round(n*100)/100).toFixed(2).replace('.',',');
@@ -589,6 +589,7 @@ function renderCk(){
   <label>Nombre y apellido</label><input id="f_name" autocomplete="name" value="${CK.name}"><div class="er" data-e="name"></div>
   <div class="row2"><div><label>Cédula</label><input id="f_ci" inputmode="numeric" maxlength="10" value="${CK.ci}"><div class="er" data-e="ci"></div></div>
   <div><label>Celular</label><input id="f_tel" inputmode="tel" maxlength="10" placeholder="09XXXXXXXX" value="${CK.tel}"><div class="er" data-e="tel"></div></div></div>
+  <label>Correo electrónico</label><input id="f_email" type="email" autocomplete="email" inputmode="email" placeholder="tucorreo@gmail.com" value="${CK.email}"><div class="er" data-e="email"></div>
   <label>Provincia</label><select id="f_prov"><option value="">Elige tu provincia</option>${PROVS.map(p=>`<option ${CK.prov===p?'selected':''}>${p}</option>`).join('')}</select><div class="er" data-e="prov"></div>
   <label>Ciudad</label><input id="f_city" autocomplete="address-level2" value="${CK.city}"><div class="er" data-e="city"></div>
   <label>Dirección y referencia</label><textarea id="f_addr" rows="2" placeholder="Calle, número, referencia">${CK.addr}</textarea><div class="er" data-e="addr"></div>
@@ -627,17 +628,18 @@ function renderCk(){
   const upd=()=>{collect();const sh=shipCost(CK.prov,CK.city),el=$('#shp');
    el.innerHTML=!CK.prov?'Elige tu provincia y calculamos el envío.':`Envío por Servientrega a <b>${CK.prov==='Guayas'?(sh===SHIP.guayaquil?'Guayaquil':'el Guayas'):CK.prov}</b>: <b>${m$(sh)}</b>`;
    $('#sumw').innerHTML=sumHtml()};
-  ['f_prov','f_city','f_name','f_ci','f_tel','f_addr'].forEach(i=>$('#'+i).addEventListener('input',()=>{const el=$('#'+i);el.classList.remove('bad');const er=document.querySelector('[data-e="'+i.replace('f_','')+'"]');if(er)er.textContent='';upd()}));upd();
+  ['f_prov','f_city','f_name','f_ci','f_tel','f_email','f_addr'].forEach(i=>$('#'+i).addEventListener('input',()=>{const el=$('#'+i);el.classList.remove('bad');const er=document.querySelector('[data-e="'+i.replace('f_','')+'"]');if(er)er.textContent='';upd()}));upd();
  }
  if(CK.step===3)w.querySelectorAll('[data-cp]').forEach(b=>b.onclick=e=>copy(b.dataset.cp,b,'Copiado','Copiar'));
 }
 function collect(){const g=i=>{const e=$('#'+i);return e?e.value.trim():null};
- [['name','f_name'],['ci','f_ci'],['tel','f_tel'],['prov','f_prov'],['city','f_city'],['addr','f_addr']].forEach(([k,i])=>{const v=g(i);if(v!=null)CK[k]=v})}
+ [['name','f_name'],['ci','f_ci'],['tel','f_tel'],['email','f_email'],['prov','f_prov'],['city','f_city'],['addr','f_addr']].forEach(([k,i])=>{const v=g(i);if(v!=null)CK[k]=v})}
 function validate(){
  const er={};
  if(CK.name.length<5||!CK.name.includes(' '))er.name='Escribe tu nombre y apellido';
  if(!/^\d{10}$/.test(CK.ci))er.ci='10 dígitos';
  if(!/^09\d{8}$/.test(CK.tel))er.tel='Ej: 09XXXXXXXX';
+ if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(CK.email))er.email='Escribe un correo válido';
  if(!CK.prov)er.prov='Elige tu provincia';
  if(CK.city.length<3)er.city='Escribe tu ciudad';
  if(CK.addr.length<8)er.addr='Escribe tu dirección y una referencia';
@@ -656,7 +658,7 @@ function finish(){
  const code='LC-'+(Date.now()%1e6).toString().padStart(6,'0');
  CK.code=code;
  const lines=CART.map(x=>{const b=bag(x.id);return `- ${x.q} × ${b.kind} ${b.name}${b.state==='pre'?' (reserva)':''}`});
- CK._txt=`Pedido ${code}\n${lines.join('\n')}\n\nNombre: ${CK.name}\nCédula: ${CK.ci}\nCelular: ${CK.tel}\nEnvío: ${CK.prov}, ${CK.city}\nDirección: ${CK.addr}\n\nProductos: ${m$(t.sub)} · Envío: ${m$(t.sh)}\nPagado ahora (transferencia): ${m$(t.now)}${t.later>0?'\nPendiente al llegar: '+m$(t.later):''}`;
+ CK._txt=`Pedido ${code}\n${lines.join('\n')}\n\nNombre: ${CK.name}\nCédula: ${CK.ci}\nCelular: ${CK.tel}\nCorreo: ${CK.email}\nEnvío: ${CK.prov}, ${CK.city}\nDirección: ${CK.addr}\n\nProductos: ${m$(t.sub)} · Envío: ${m$(t.sh)}\nPagado ahora (transferencia): ${m$(t.now)}${t.later>0?'\nPendiente al llegar: '+m$(t.later):''}`;
  CK._done=t;CK.step=4;CART=[];save();badge();renderCk();$('#ck').scrollTop=0;
 }
 document.addEventListener('click',e=>{
