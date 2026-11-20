@@ -735,8 +735,7 @@ BAGS.forEach(b=>{b.nuevo=NEWRE.test(b.id)});
   <div class="ph"><img src="${b.img[0]}" alt="${b.kind} ${b.name}" loading="lazy"><span class="nb">Nuevo</span></div>
   <div class="nf"><div class="k">${b.kind}</div><div class="n g">${b.name}</div><div class="p">${price(b)}</div><button class="btn" data-add="${b.id}">Reservar con $${ANT}</button></div></div>`).join('');
  document.querySelectorAll('.nt').forEach(el=>io.observe(el));
- const e=N[0].eta.split('-').map(Number),d=new Date(e[0],e[1]-1,e[2]),t=new Date(),days=Math.round((d-new Date(t.getFullYear(),t.getMonth(),t.getDate()))/864e5);
- $('#nwd').textContent=days>1?'el '+d.toLocaleDateString('es-EC',{day:'numeric',month:'long'})+' · en '+days+' días':days===1?'mañana':'en estos días';
+ $('#nwd').textContent=etaTxt(N[0]).replace(/^Llega(n)? /,'');
  const tr=$('#nwt'),by=()=>Math.max(240,tr.clientWidth*.7);
  $('#nwp').onclick=()=>tr.scrollBy({left:-by(),behavior:'smooth'});
  $('#nwn').onclick=()=>tr.scrollBy({left:by(),behavior:'smooth'});
