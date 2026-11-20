@@ -252,12 +252,37 @@ dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;o
 .demo{background:#fff3cd;color:#5c4400;border-radius:12px;padding:10px 12px;font-size:12px;margin-bottom:12px}
 .btn[disabled]{opacity:.6;cursor:wait}
 .cta .alt2{background:transparent;color:var(--b);border:1.5px solid var(--b)}
+
+/* ===== NUEVOS MODELOS ===== */
+.nw{padding:48px 0 20px;background:linear-gradient(180deg,color-mix(in srgb,var(--p) 55%,transparent),transparent)}
+.nwh{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.nws{color:var(--c);max-width:460px;margin-top:-10px}
+.nws b{color:var(--r)}
+.nwa{display:flex;gap:8px}
+.nwa button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--b);background:transparent;color:var(--b);font-size:18px;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.nwa button:hover{background:var(--b);color:var(--h);transform:scale(1.08)}
+.nwt{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 20px 26px;margin:0 -20px;scrollbar-width:none}
+.nwt::-webkit-scrollbar{display:none}
+.nt{flex:0 0 min(240px,66vw);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;cursor:pointer;position:relative;transition:transform .25s,box-shadow .25s;text-align:left}
+.nt:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(40,2,1,.14)}
+.nt .ph{aspect-ratio:4/5;background:#fff;position:relative;overflow:hidden}
+.nt .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.nt:hover .ph img{transform:scale(1.04)}
+.nt .nb{position:absolute;top:12px;left:12px;background:var(--b);color:var(--h);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.nt .nb::before{content:'✦ '}
+.nt .nf{padding:12px 14px 16px}
+.nt .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--r);font-weight:700}
+.nt .n{font-size:22px;font-style:italic;line-height:1.1;margin:2px 0 4px}
+.nt .p{font-weight:700;margin-bottom:10px}
+.nt .btn{width:100%;padding:10px 12px;font-size:13px}
+.badge.nw{left:auto;right:14px;background:var(--b);color:var(--h)}
+.nt.rv{transition-delay:calc(var(--i,0)*80ms)}
 </style></head><body>
 
 <div class="prog" id="prog"></div>
 <header id="hd"><div class="wrap in">
  <a href="#top"><img class="logo" id="hl" src="a/wm-borgona.png" alt="Lady's Club"></a>
- <nav><a href="#catalogo">Bolsos</a><a href="#envios">Envíos</a><a href="#preguntas">Preguntas</a><a href="#nosotras">Nosotras</a></nav>
+ <nav><a href="#nuevos">Nuevos</a><a href="#catalogo">Bolsos</a><a href="#envios">Envíos</a><a href="#preguntas">Preguntas</a><a href="#nosotras">Nosotras</a></nav>
  <a class="btn" data-ig href="#">Pedir por mensaje</a>
 </div></header>
 
@@ -273,6 +298,11 @@ dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;o
 </div></section>
 
 <div class="mq" aria-hidden="true"><div class="tr" id="mqt"></div></div>
+
+<section class="nw" id="nuevos"><div class="wrap">
+ <div class="nwh"><div><div class="eyes">Recién pedidos</div><h2 class="h g">Nuevos <i>modelos</i></h2><p class="nws">Reserva el tuyo con $5. Llegan <b id="nwd"></b>.</p></div><div class="nwa"><button id="nwp" aria-label="Anterior">←</button><button id="nwn" aria-label="Siguiente">→</button></div></div>
+ <div class="nwt" id="nwt"></div>
+</div></section>
 
 <section id="catalogo"><div class="wrap">
  <div class="eyes">El catálogo</div>
@@ -386,6 +416,7 @@ const BAGS=[
 {"id": "french-chocolate", "color": "Café", "cat": "French", "kind": "French Bag", "name": "Chocolate", "price": 30, "state": "pre", "eta": "2026-11-25", "img": ["a/w_french-chocolate.jpg"], "use": "Bolso amplio y estructurado en tono chocolate, de textura granulada y asas redondas. Elegante para el día a día.", "det": ["Textura granulada", "Cierre dorado rosado al frente", "Bolsillos laterales"], "spec": [["Medidas", "21 cm de alto × 29 cm de ancho (base) / 41 cm (parte superior) × 12 cm de profundidad"]], "rows": [["Asas", "Dos asas redondas de hombro"], ["Detalles", "Cierre dorado rosado al frente y bolsillos laterales"], ["Acabado", "Textura granulada"]]}
 ];
 /* ===== LÓGICA ===== */
+const NEWRE=/^(mufy|star|mochila|bow|french)-/;
 const $=s=>document.querySelector(s);
 function link(kind,msg){
  const t=encodeURIComponent(msg);
@@ -398,7 +429,7 @@ function wire(){
 }
 const price=b=>b.price==null?'Precio por confirmar':'$'+b.price;
 function empty(){return '<div class="empty"><img src="a/eli-timida.png" alt=""><span>Foto próximamente</span></div>'}
-function cats(){return ['Todos','Totes','Hobo','Clásicas','Bandoleras','Mufy','Mochilas','French','Disponibles','Para reservar']}
+function cats(){return ['Todos','Nuevos','Totes','Hobo','Clásicas','Bandoleras','Mufy','Mochilas','French','Disponibles','Para reservar']}
 const ANT=5;
 function etaTxt(b){
  const wk=d=>{const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-((x.getDay()+6)%7));return x};
@@ -410,7 +441,7 @@ function etaTxt(b){
 const ord=b=>b.state==='in'?0:b.state==='pre'?1:2;
 let flt='Todos',cf='Todos';
 const CDOT={Negro:'#1b1b1b',Café:'#5a3a29',Azul:'#1f2a5a',Rosa:'#efb6c4',Gris:'#6b6b6b',Beige:'#d9c9b0'};
-function match(b){if(cf!=='Todos'&&b.color!==cf)return false;return flt==='Todos'||(flt==='Totes'&&b.cat==='Tote Bags')||(flt==='Hobo'&&b.cat==='Hobo Bags')||(flt==='Clásicas'&&b.cat==='Clásicas')||(['Bandoleras','Mufy','Mochilas','French'].includes(flt)&&b.cat===flt)||(flt==='Disponibles'&&b.state==='in')||(flt==='Para reservar'&&b.state==='pre')}
+function match(b){if(cf!=='Todos'&&b.color!==cf)return false;return flt==='Todos'||(flt==='Nuevos'&&b.nuevo)||(flt==='Totes'&&b.cat==='Tote Bags')||(flt==='Hobo'&&b.cat==='Hobo Bags')||(flt==='Clásicas'&&b.cat==='Clásicas')||(['Bandoleras','Mufy','Mochilas','French'].includes(flt)&&b.cat===flt)||(flt==='Disponibles'&&b.state==='in')||(flt==='Para reservar'&&b.state==='pre')}
 function renderFilters(){
  $('#fl').innerHTML='<span class="ind"></span>'+cats().map(c=>`<button class="fl" aria-pressed="${c===flt}" data-f="${c}">${c}</button>`).join('');
  $('#fl').onclick=e=>{const f=e.target.dataset.f;if(f&&f!==flt){flt=f;document.querySelectorAll('.fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===flt));moveInd();renderGrid()}};
@@ -429,7 +460,7 @@ function renderGrid(){
  $('#gr').innerHTML=BAGS.filter(match).sort((x,y)=>ord(x)-ord(y)).map((b,i)=>`
  <div class="card" role="button" tabindex="0" style="--i:${i}" data-id="${b.id}" aria-label="Ver ${b.kind} ${b.name}">
   <div class="ph">${b.img[0]?`<img class="main ${b.contain?'contain':''}" src="${b.img[0]}" alt="${b.name}" loading="lazy">`:empty()}${b.img[1]?`<img class="alt" src="${b.img[1]}" alt="" loading="lazy">`:''}<span class="glare"></span><span class="go">Ver detalles</span>
-   <span class="badge ${b.state==='out'?'out':b.state==='pre'?'pre':''}">${b.state==='out'?'Agotado':b.state==='pre'?'Resérvalo':(b.tag||'Disponible')}</span></div>
+   <span class="badge ${b.state==='out'?'out':b.state==='pre'?'pre':''}">${b.state==='out'?'Agotado':b.state==='pre'?'Resérvalo':(b.tag||'Disponible')}</span>${b.nuevo?'<span class="badge nw">Nuevo</span>':''}</div>
   <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div>${b.state==='in'?`<button class="btn pedir" data-add="${b.id}">Agregar al pedido</button>`:b.state==='pre'?`<div class="eta"><i></i><b>${etaTxt(b)}</b>${b.cupos?`<span>· ${b.cupos===1?'Queda 1':'Quedan '+b.cupos}</span>`:''}</div><button class="btn pedir" data-add="${b.id}">Reservar con $${ANT}</button>`:''}</div>
  </div>`).join('');
 }
@@ -516,7 +547,7 @@ document.querySelectorAll('section:not(.hero) .eyes,h2.h,.about img,.about p').f
 document.querySelectorAll('.fq details').forEach(el=>{el.classList.add('rv');io.observe(el)});
 document.querySelectorAll('.box').forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--d',(i*.12)+'s');io.observe(el)});
 /* cinta animada */
-const words=['Envíos a todo Ecuador','Pedido por mensaje','Edición especial Green House','Espacio para tu laptop','Pensados para tu rutina'];
+const words=['Nuevos modelos · reserva con $5','Envíos a todo Ecuador','Pedido por mensaje','Edición especial Green House','Espacio para tu laptop','Pensados para tu rutina'];
 const chunk=words.map(w=>'<span>'+w+'</span><b>✦</b>').join('');
 $('#mqt').innerHTML=chunk+chunk+chunk+chunk;
 /* hero: estrellitas + parallax */
@@ -695,6 +726,24 @@ document.addEventListener('click',e=>{
  const r=e.target.closest('[data-rm]');if(r){CART=CART.filter(x=>x.id!==r.dataset.rm);save();badge();renderCk()}
 });
 badge();
+
+/* ===== NUEVOS MODELOS ===== */
+BAGS.forEach(b=>{b.nuevo=NEWRE.test(b.id)});
+(function(){
+ const N=BAGS.filter(b=>b.nuevo);if(!N.length)return;
+ $('#nwt').innerHTML=N.map((b,i)=>`<div class="nt rv" style="--i:${i}" data-id="${b.id}" role="button" tabindex="0" aria-label="Ver ${b.kind} ${b.name}">
+  <div class="ph"><img src="${b.img[0]}" alt="${b.kind} ${b.name}" loading="lazy"><span class="nb">Nuevo</span></div>
+  <div class="nf"><div class="k">${b.kind}</div><div class="n g">${b.name}</div><div class="p">${price(b)}</div><button class="btn" data-add="${b.id}">Reservar con $${ANT}</button></div></div>`).join('');
+ document.querySelectorAll('.nt').forEach(el=>io.observe(el));
+ const e=N[0].eta.split('-').map(Number),d=new Date(e[0],e[1]-1,e[2]),t=new Date(),days=Math.round((d-new Date(t.getFullYear(),t.getMonth(),t.getDate()))/864e5);
+ $('#nwd').textContent=days>1?'el '+d.toLocaleDateString('es-EC',{day:'numeric',month:'long'})+' · en '+days+' días':days===1?'mañana':'en estos días';
+ const tr=$('#nwt'),by=()=>Math.max(240,tr.clientWidth*.7);
+ $('#nwp').onclick=()=>tr.scrollBy({left:-by(),behavior:'smooth'});
+ $('#nwn').onclick=()=>tr.scrollBy({left:by(),behavior:'smooth'});
+ tr.onclick=ev=>{if(ev.target.closest('[data-add]'))return;const c=ev.target.closest('.nt');if(c)openBag(c.dataset.id)};
+ tr.onkeydown=ev=>{if(ev.key==='Enter'){const c=ev.target.closest('.nt');if(c)openBag(c.dataset.id)}};
+ renderFilters();renderGrid();
+})();
 </script></body></html>
 
 </body></html>
