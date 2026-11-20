@@ -289,7 +289,7 @@ dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;o
 .nt .n{font-size:22px;font-style:italic;line-height:1.1;margin:2px 0 4px}
 .nt .p{font-weight:700;margin-bottom:10px}
 .nt .btn{width:100%;padding:10px 12px;font-size:13px}
-.badge.nw{left:auto;right:14px;background:var(--b);color:var(--h)}
+.badge.nwb{left:auto;right:14px;background:var(--b);color:var(--h)}
 .nt.rv{transition-delay:calc(var(--i,0)*80ms)}
 </style></head><body>
 
@@ -474,7 +474,7 @@ function renderGrid(){
  $('#gr').innerHTML=BAGS.filter(match).sort((x,y)=>ord(x)-ord(y)).map((b,i)=>`
  <div class="card" role="button" tabindex="0" style="--i:${i}" data-id="${b.id}" aria-label="Ver ${b.kind} ${b.name}">
   <div class="ph">${b.img[0]?`<img class="main ${b.contain?'contain':''}" src="${b.img[0]}" alt="${b.kind} ${b.name}" loading="lazy">`:empty()}${b.img[1]?`<img class="alt" src="${b.img[1]}" alt="" loading="lazy">`:''}<span class="glare"></span><span class="go">Ver detalles</span>
-   <span class="badge ${b.state==='out'?'out':b.state==='pre'?'pre':''}">${b.state==='out'?'Agotado':b.state==='pre'?'Resérvalo':(b.tag||'Disponible')}</span>${b.nuevo?'<span class="badge nw">Nuevo</span>':''}</div>
+   <span class="badge ${b.state==='out'?'out':b.state==='pre'?'pre':''}">${b.state==='out'?'Agotado':b.state==='pre'?'Resérvalo':(b.tag||'Disponible')}</span>${b.nuevo?'<span class="badge nwb">Nuevo</span>':''}</div>
   <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div>${b.state==='in'?`<button class="btn pedir" data-add="${b.id}">Agregar al pedido</button>`:b.state==='pre'?`<div class="eta"><i></i><b>${etaTxt(b)}</b>${b.cupos?`<span>· ${b.cupos===1?'Queda 1':'Quedan '+b.cupos}</span>`:''}</div><button class="btn pedir" data-add="${b.id}">Reservar con $${ANT}</button>`:''}</div>
  </div>`).join('');
 }
