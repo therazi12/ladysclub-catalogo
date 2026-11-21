@@ -1,0 +1,9 @@
+{
+  // Plantilla para cuando activemos el backend (NO se usa en producción todavía).
+  "name": "catalogo-club-de-mujeres",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-11-01",
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  "d1_databases": [{ "binding": "DB", "database_name": "ladysclub", "database_id": "PEGAR_ID_AL_ACTIVAR" }]
+  // R2 opcional (comprobantes como archivo): "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "ladysclub-comprobantes" }]
+}
