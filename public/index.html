@@ -200,73 +200,6 @@ dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;o
 .det .cta{margin-top:24px}.det .cta .btn{flex:1;min-width:200px;padding:16px 24px}
 @media (max-width:760px){dialog{overflow-y:auto}.fx{height:auto;grid-template-columns:1fr}.gal{height:auto}.gal .big{aspect-ratio:4/5;flex:none}.det{height:auto;overflow:visible;padding:26px 22px 40px}.thumbs{bottom:12px}.x{right:14px;top:12px}}
 
-/* ===== CARRITO Y PAGO ===== */
-.cartb{position:fixed;right:14px;bottom:62px;z-index:30;border:0;background:var(--b);color:var(--h);height:46px;padding:0 18px;border-radius:999px;cursor:pointer;font:700 14px "DM Sans",sans-serif;display:none;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(40,2,1,.25);transition:transform .25s}
-.cartb.on{display:inline-flex;animation:pop .4s cubic-bezier(.2,.9,.3,1.4)}
-.cartb:hover{transform:translateY(-2px)}
-.cartb b{background:var(--r);color:#fff;border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;padding:0 6px}
-:root[data-theme=dark] .cartb{color:#1c1418}
-@keyframes pop{from{transform:scale(.6);opacity:0}}
-#ck{width:min(560px,100vw);height:100vh;max-height:100vh;margin:0 0 0 auto;border-radius:26px 0 0 26px;overflow-y:auto;overflow-x:hidden}
-#ck[open]{animation:slr .4s cubic-bezier(.2,.9,.3,1)}
-@keyframes slr{from{transform:translateX(40px);opacity:0}}
-@media (max-width:760px){#ck{border-radius:0;width:100vw}}
-.ckw{padding:24px 22px 40px}
-.ckh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.ckh h3{font-weight:normal;font-size:30px}
-.ckx{border:0;background:var(--p);color:var(--b);width:38px;height:38px;border-radius:50%;font-size:22px;cursor:pointer}
-.stp{display:flex;gap:6px;margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.04em}
-.stp span{flex:1;padding:8px 0;border-bottom:3px solid var(--line);opacity:.55;transition:.3s}
-.stp span.on{border-color:var(--r);opacity:1}
-.stp span.ok{border-color:var(--b);opacity:.9}
-.pane{animation:pn .35s ease both}@keyframes pn{from{opacity:0;transform:translateY(10px)}}
-.ci{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
-.ci img{width:64px;height:64px;object-fit:cover;border-radius:12px;background:var(--p)}
-.ci .n{font-weight:700;font-size:14px}.ci .s{font-size:12px;color:var(--mut)}
-.qt{display:inline-flex;align-items:center;gap:8px;margin-top:6px}
-.qt button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--b);cursor:pointer;font-size:15px}
-.ci .pp{font-weight:700;text-align:right}
-.ci .rm{display:block;border:0;background:none;color:var(--mut);font-size:12px;cursor:pointer;text-decoration:underline;margin-top:4px}
-.ckf label{display:block;font-size:12px;font-weight:700;margin:12px 0 4px;letter-spacing:.03em}
-.ckf input,.ckf select,.ckf textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--b);font:15px 'DM Sans',sans-serif;transition:border-color .2s,box-shadow .2s}
-.ckf input:focus,.ckf select:focus,.ckf textarea:focus{outline:0;border-color:var(--r);box-shadow:0 0 0 4px color-mix(in srgb,var(--r) 22%,transparent)}
-.ckf .bad{border-color:#b3261e}
-.ckf .er{color:#b3261e;font-size:12px;min-height:0;margin-top:3px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.shp{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--p);font-size:14px;transition:.3s}
-.shp b{color:var(--r)}
-.sum{margin-top:18px;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--card);font-size:14px}
-.sum div{display:flex;justify-content:space-between;padding:3px 0}
-.sum .t{border-top:1px dashed var(--line);margin-top:6px;padding-top:9px;font-weight:700;font-size:17px}
-.sum .lt{color:var(--mut);font-size:13px}
-.sum small{display:block;color:var(--mut);margin-top:6px;font-size:12px}
-.pm{display:flex;align-items:center;gap:10px;padding:14px;border:1.5px solid var(--line);border-radius:14px;margin-top:10px;cursor:pointer;background:var(--card)}
-.pm.sel{border-color:var(--r);box-shadow:0 0 0 3px color-mix(in srgb,var(--r) 20%,transparent)}
-.pm.dis{opacity:.5;cursor:not-allowed}
-.pm i{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex:none}.pm.sel i{border:6px solid var(--r)}
-.pm small{margin-left:auto;font-size:11px;color:var(--mut)}
-.acct{margin-top:12px;padding:14px;border-radius:14px;background:var(--p);font-size:14px;animation:pn .35s ease both}
-.acct h5{font-size:14px;margin-bottom:6px}
-.acct .ln{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:3px 0}
-.acct .ln span{color:var(--mut)}
-.cp{border:1px solid var(--line);background:var(--card);color:var(--b);border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;margin-left:8px}
-.cp.ok{background:var(--r);color:#fff;border-color:var(--r)}
-.ref{margin-top:12px;padding:12px;border-radius:14px;border:1.5px dashed var(--r);text-align:center;font-size:14px}
-.ref b{font-size:20px;letter-spacing:.06em}
-.ckn{font-size:12px;color:var(--mut);margin-top:10px}
-.ckb{display:flex;gap:10px;margin-top:18px}.ckb .btn{flex:1}
-.done{text-align:center;padding:10px 0}
-.done .ok{width:70px;height:70px;border-radius:50%;background:var(--r);color:#fff;display:grid;place-items:center;font-size:34px;margin:6px auto 12px;animation:pop .6s cubic-bezier(.2,.9,.3,1.5)}
-.steps{text-align:left;margin:16px 0;padding-left:20px;font-size:14px}.steps li{margin:6px 0}
-.up{margin-top:14px;padding:14px;border:1.5px dashed var(--line);border-radius:14px;text-align:center;font-size:14px;cursor:pointer;display:block;transition:.25s}
-.up:hover,.up.has{border-color:var(--r);background:color-mix(in srgb,var(--r) 8%,transparent)}
-.up input{display:none}.up img{max-width:100%;max-height:180px;border-radius:10px;margin-top:10px;display:block;margin-inline:auto}
-.up small{display:block;color:var(--mut);font-size:12px;margin-top:4px}
-.demo{background:#fff3cd;color:#5c4400;border-radius:12px;padding:10px 12px;font-size:12px;margin-bottom:12px}
-.btn[disabled]{opacity:.6;cursor:wait}
-.cta .alt2{background:transparent;color:var(--b);border:1.5px solid var(--b)}
-:root[data-theme=dark] .cta .alt2,:root[data-theme=dark] .btn.alt2{background:transparent;color:var(--b);border-color:var(--b)}
-
 /* ===== NUEVOS MODELOS ===== */
 .nw{padding:48px 0 20px;background:linear-gradient(180deg,color-mix(in srgb,var(--p) 55%,transparent),transparent)}
 .nwh{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
@@ -340,7 +273,7 @@ dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;o
  <div class="eyes">Preguntas frecuentes</div>
  <h2 class="h g">Lo que más nos <i>preguntan</i></h2>
  <div class="fq">
-  <details><summary>¿Cómo hago mi pedido?</summary><p>Toca <b>Agregar al pedido</b> en el bolso que te guste, llena tus datos de entrega y paga por transferencia. Luego nos envías el comprobante con tu código de pedido y confirmamos el pago.</p></details>
+  <details><summary>¿Cómo hago mi pedido?</summary><p>Toca <b>Pedir</b> en el bolso que te guste y escríbenos por Instagram. Te confirmamos la disponibilidad y coordinamos los datos de envío.</p></details>
   <details style="--d:.05s"><summary>¿Cuánto cuesta el envío?</summary><p>Por Servientrega: Guayaquil $3,00, resto del Guayas $5,00 y otras provincias $7,00.</p></details>
   <details style="--d:.1s"><summary>¿Cuándo se envía mi pedido?</summary><p>Los envíos se realizan una vez confirmado el pago.</p></details>
   <details style="--d:.15s"><summary>¿Cómo sé dónde está mi pedido?</summary><p>Te enviamos el número de guía para que lo rastrees en todo momento.</p></details>
@@ -369,8 +302,6 @@ dialog{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;o
  <p style="margin-top:6px;font-size:13px;color:#E6D0D5">Guayaquil, Ecuador · Bolsos trendy</p>
 </div></footer>
 
-<button class="cartb" id="cartb" aria-label="Ver mi pedido">Mi pedido <b id="cn">0</b></button>
-<dialog id="ck"><div class="ckw" id="ckw"></div></dialog>
 <dialog id="dg"><div class="fx" id="fx"></div></dialog>
 <button class="tg" id="tg" aria-label="Cambiar tema">Tema</button>
 
@@ -475,7 +406,7 @@ function renderGrid(){
  <div class="card" role="button" tabindex="0" style="--i:${i}" data-id="${b.id}" aria-label="Ver ${b.kind} ${b.name}">
   <div class="ph">${b.img[0]?`<img class="main ${b.contain?'contain':''}" src="${b.img[0]}" alt="${b.kind} ${b.name}" loading="lazy">`:empty()}${b.img[1]?`<img class="alt" src="${b.img[1]}" alt="" loading="lazy">`:''}<span class="glare"></span><span class="go">Ver detalles</span>
    <span class="badge ${b.state==='out'?'out':b.state==='pre'?'pre':''}">${b.state==='out'?'Agotado':b.state==='pre'?'Resérvalo':(b.tag||'Disponible')}</span>${b.nuevo?'<span class="badge nwb">Nuevo</span>':''}</div>
-  <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div>${b.state==='in'?`<button class="btn pedir" data-add="${b.id}">Agregar al pedido</button>`:b.state==='pre'?`<div class="eta"><i></i><b>${etaTxt(b)}</b>${b.cupos?`<span>· ${b.cupos===1?'Queda 1':'Quedan '+b.cupos}</span>`:''}</div><button class="btn pedir" data-add="${b.id}">Reservar con $${ANT}</button>`:''}</div>
+  <div class="info"><div class="k">${b.kind}</div><div class="n g">${b.name}${b.sub?' <span style="font-size:.6em;color:var(--r)">'+b.sub+'</span>':''}</div><div class="pr">${price(b)}</div>${b.state==='in'?`<a class="btn pedir" href="${link('ig','Hola, quiero pedir: '+b.kind+' '+b.name)}" target="_blank" rel="noopener">Pedir</a>`:b.state==='pre'?`<div class="eta"><i></i><b>${etaTxt(b)}</b>${b.cupos?`<span>· ${b.cupos===1?'Queda 1':'Quedan '+b.cupos}</span>`:''}</div><a class="btn pedir" href="${link('ig','Hola, quiero reservar: '+b.kind+' '+b.name)}" target="_blank" rel="noopener">Reservar con $${ANT}</a>`:''}</div>
  </div>`).join('');
 }
 $('#gr').onclick=e=>{if(e.target.closest('.pedir'))return;const c=e.target.closest('.card');if(c)openBag(c.dataset.id)};
@@ -536,8 +467,8 @@ function openBag(id){
    <p>Afuera de la ESPOL, los días martes, miércoles y jueves.</p>
   </div></details>
   ${prodRows(b).length>1?`<details class="acc"><summary>Detalles del producto</summary><div class="ab"><dl>${prodRows(b).map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl></div></details>`:''}
-  <div class="cta">${out?`<a class="btn" href="${link('ig',msg)}" target="_blank" rel="noopener">Avísame cuando llegue</a>`:`<button class="btn" data-add="${b.id}">${pre?'Reservar con $'+ANT:'Agregar al pedido'}</button>`}<a class="btn alt2" href="${link('ig',msg)}" target="_blank" rel="noopener">Preguntar por Instagram</a></div>
-  <p class="note">${pre?`${etaTxt(b)}. Apartas el tuyo con $${ANT}, que se descuentan del precio: ${b.price==null?'el precio final te lo confirmamos antes de pagar el resto.':'pagas los $'+(b.price-ANT)+' restantes cuando llegue.'}${b.cupos?' '+(b.cupos===1?'Queda 1 para reservar.':'Quedan '+b.cupos+' para reservar.'):''}`:out?'Este modelo está agotado por ahora.':'Pagas por transferencia y envías tu comprobante; el envío sale una vez confirmado el pago.'}</p>
+  <div class="cta">${out?`<a class="btn" href="${link('ig',msg)}" target="_blank" rel="noopener">Avísame cuando llegue</a>`:`<a class="btn" href="${link('ig',msg)}" target="_blank" rel="noopener">${pre?'Reservar con $'+ANT:'Pedir por Instagram'}</a>`}<a class="btn alt2" href="${link('ig',msg)}" target="_blank" rel="noopener">Preguntar por Instagram</a></div>
+  <p class="note">${pre?`${etaTxt(b)}. Apartas el tuyo con $${ANT}, que se descuentan del precio: ${b.price==null?'el precio final te lo confirmamos antes de pagar el resto.':'pagas los $'+(b.price-ANT)+' restantes cuando llegue.'}${b.cupos?' '+(b.cupos===1?'Queda 1 para reservar.':'Quedan '+b.cupos+' para reservar.'):''}`:out?'Este modelo está agotado por ahora.':'Escríbenos por Instagram y coordinamos el pago y el envío.'}</p>
  </div>`;
  $('#cx').onclick=()=>dg.close();
  $('.thumbs')&&($('.thumbs').onclick=e=>{const t=e.target.closest('button');if(!t)return;$('#bg').innerHTML=big(+t.dataset.i);document.querySelectorAll('.thumbs button').forEach(x=>x.setAttribute('aria-current',x===t))});
@@ -581,179 +512,19 @@ dgl.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(M
 /* corazoncitos al pedir */
 document.addEventListener('click',e=>{const b=e.target.closest('.btn');if(!b||RM)return;const host=b.closest('dialog')||document.body;for(let i=0;i<8;i++){const h=document.createElement('span');h.className='heart';h.textContent='♡';const a=Math.random()*Math.PI*2,d=40+Math.random()*50;h.style.cssText='left:'+e.clientX+'px;top:'+e.clientY+'px;--hx:'+(Math.cos(a)*d)+'px;--hy:'+(Math.sin(a)*d-30)+'px;--hr:'+(Math.random()*90-45)+'deg';host.appendChild(h);setTimeout(()=>h.remove(),950)}});
 
-/* ===== CARRITO Y PAGO ===== */
-const PROVS=['Azuay','Bolívar','Cañar','Carchi','Chimborazo','Cotopaxi','El Oro','Esmeraldas','Galápagos','Guayas','Imbabura','Loja','Los Ríos','Manabí','Morona Santiago','Napo','Orellana','Pastaza','Pichincha','Santa Elena','Santo Domingo de los Tsáchilas','Sucumbíos','Tungurahua','Zamora Chinchipe'];
-/* Tarifas Servientrega: cámbialas aquí */
-const SHIP={guayaquil:3,guayas:5,pais:7};
-const ACCTS=[
- {banco:'Banco Guayaquil',tipo:'Ahorros',num:'0051875961',tit:'Melendre Arroba Lady Elizabeth',ci:'0932663503'},
- {banco:'Banco Pichincha',tipo:'Ahorro transaccional',num:'2213916150',tit:'Santiago Isaza Polo',ci:'0950135665'}
-];
-const norm=t=>(t||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
-function shipCost(prov,city){if(!prov)return null;if(prov==='Guayas')return norm(city).includes('guayaquil')?SHIP.guayaquil:SHIP.guayas;return SHIP.pais}
-let CART=[];try{CART=JSON.parse(localStorage.getItem('lc_cart')||'[]').filter(x=>BAGS.some(b=>b.id===x.id&&b.state!=='out'))}catch(e){}
-let CK={step:1,prov:'',city:'',name:'',ci:'',tel:'',email:'',addr:'',note:'',pay:'tr',code:'',proof:'',saved:false,demo:false};
-const save=()=>{try{localStorage.setItem('lc_cart',JSON.stringify(CART))}catch(e){}};
-const bag=id=>BAGS.find(b=>b.id===id);
-const m$=n=>'$'+(Math.round(n*100)/100).toFixed(2).replace('.',',');
-function totals(){
- let now=0,later=0,hasIn=false,sub=0,unk=false;
- CART.forEach(x=>{const b=bag(x.id);if(b.price==null){now+=ANT*x.q;unk=true;return}sub+=b.price*x.q;if(b.state==='pre'){now+=ANT*x.q;later+=(b.price-ANT)*x.q}else{now+=b.price*x.q;hasIn=true}});
- const sh=shipCost(CK.prov,CK.city);
- if(sh!=null){if(hasIn)now+=sh;else later+=sh}
- return {sub,now,later,hasIn,sh,unk};
-}
-function badge(){const n=CART.reduce((a,x)=>a+x.q,0);$('#cn').textContent=n;const c=$('#cartb');c.classList.toggle('on',n>0)}
-function addCart(id){
- const b=bag(id),it=CART.find(x=>x.id===id);
- if(it)it.q=Math.min(5,it.q+1);else CART.push({id,q:1});
- save();badge();const c=$('#cartb');c.classList.remove('on');void c.offsetWidth;c.classList.add('on');
- if($('#dg').open)$('#dg').close();
- openCk(1);
-}
-document.addEventListener('click',e=>{const a=e.target.closest('[data-add]');if(a){e.stopPropagation();addCart(a.dataset.add)}},true);
-$('#cartb').onclick=()=>openCk(1);
-function openCk(step){CK.step=step;renderCk();const d=$('#ck');if(!d.open)d.showModal()}
-$('#ck').addEventListener('click',e=>{if(e.target.id==='ck')e.target.close()});
-function sumHtml(){
- const t=totals();
- return `<div class="sum">
-  <div><span>Productos</span><span>${t.unk?(t.sub?m$(t.sub)+' + ':'')+'por confirmar':m$(t.sub)}</span></div>
-  <div><span>Envío Servientrega</span><span>${t.sh==null?'se calcula con tu destino':m$(t.sh)}</span></div>
-  <div class="t"><span>Pagas ahora</span><span>${m$(t.now)}</span></div>
-  ${t.later>0||t.unk?`<div class="lt"><span>Pagas cuando llegue tu bolso</span><span>${t.unk?(t.later?m$(t.later)+' + ':'')+'saldo por confirmar':m$(t.later)}</span></div>`:''}
-  ${t.sh==null?'<small>Elige tu provincia para ver el envío.</small>':''}
- </div>`;
-}
-function stepsHtml(){const n=['Pedido','Entrega','Pago'];return `<div class="stp">${n.map((x,i)=>`<span class="${CK.step===i+1?'on':CK.step>i+1?'ok':''}">${i+1}. ${x}</span>`).join('')}</div>`}
-function renderCk(){
- const w=$('#ckw');
- const head=(t)=>`<div class="ckh"><h3 class="g">${t}</h3><button class="ckx" id="ckx" aria-label="Cerrar">×</button></div>`;
- if(CK.step===4){
-  const t=CK._done;
-  w.innerHTML=head('¡Pedido recibido!')+`<div class="done pane">${CK.demo?'<div class="demo">Modo demostración: este pedido no se guardó.</div>':''}<div class="ok">✓</div>
-  <p>${CK.saved?'Registramos tu pedido.':'No pudimos registrar tu pedido automáticamente: envíanos el resumen por Instagram.'}<br>Tu código de pedido es <b style="font-size:22px;letter-spacing:.06em">${CK.code}</b></p>
-  <ol class="steps"><li>Transfiere <b>${m$(t.now)}</b> a la cuenta que elegiste y pon <b>${CK.code}</b> como referencia.</li><li>${CK.saved&&CK.proof?'Recibimos tu comprobante.':'Envíanos la foto del comprobante junto con tu código por <b>'+(CONTACT.wa?'WhatsApp o ':'')+'Instagram</b>.'}</li><li>Confirmamos tu pago y coordinamos la entrega por Servientrega.</li></ol>
-  <div class="ckb" style="flex-direction:column"><button class="btn" id="cpOrd">Copiar resumen del pedido</button>
-  <a class="btn alt" target="_blank" rel="noopener" href="${link(CONTACT.wa?'wa':'ig',CK._txt)}">Enviar comprobante${CONTACT.wa?' por WhatsApp':' por Instagram'}</a></div>
-  <p class="ckn">Copia el resumen, abre el chat y pégalo junto con la foto de tu comprobante.</p></div>`;
-  $('#ckx').onclick=()=>$('#ck').close();
-  $('#cpOrd').onclick=e=>copy(CK._txt,e.target,'¡Copiado! ♡','Copiar resumen del pedido');
-  return;
- }
- if(!CART.length){w.innerHTML=head('Mi pedido')+`<div class="done pane"><img src="a/eli-timida.png" alt="" style="width:120px"><p style="margin:10px 0 18px">Aún no has agregado bolsos.</p><button class="btn" id="ckx2">Ver el catálogo</button></div>`;$('#ckx').onclick=$('#ckx2').onclick=()=>$('#ck').close();return}
- let h=head(CK.step===1?'Mi pedido':CK.step===2?'Datos de entrega':'Pago')+stepsHtml();
- if(CK.step===1){
-  h+=`<div class="pane">`+CART.map(x=>{const b=bag(x.id);return `<div class="ci"><img src="${b.img[0]||''}" alt=""><div><div class="n">${b.kind} · ${b.name}</div><div class="s">${b.state==='pre'?'Reserva con $'+ANT+' · '+etaTxt(b):'Disponible'}</div><div class="qt"><button data-q="${b.id}" data-d="-1" aria-label="Menos">−</button><span>${x.q}</span><button data-q="${b.id}" data-d="1" aria-label="Más">+</button></div></div><div class="pp">${b.price==null?'Por confirmar':m$(b.price*x.q)}<button class="rm" data-rm="${b.id}">Quitar</button></div></div>`}).join('')+sumHtml()+`<div class="ckb"><button class="btn alt" id="more">Seguir viendo</button><button class="btn" id="nx">Continuar</button></div></div>`;
- }
- if(CK.step===2){
-  h+=`<div class="pane ckf">
-  <label>Nombre y apellido</label><input id="f_name" autocomplete="name" value="${CK.name}"><div class="er" data-e="name"></div>
-  <div class="row2"><div><label>Cédula</label><input id="f_ci" inputmode="numeric" maxlength="10" value="${CK.ci}"><div class="er" data-e="ci"></div></div>
-  <div><label>Celular</label><input id="f_tel" inputmode="tel" maxlength="10" placeholder="09XXXXXXXX" value="${CK.tel}"><div class="er" data-e="tel"></div></div></div>
-  <label>Correo electrónico</label><input id="f_email" type="email" autocomplete="email" inputmode="email" placeholder="tucorreo@gmail.com" value="${CK.email}"><div class="er" data-e="email"></div>
-  <label>Provincia</label><select id="f_prov"><option value="">Elige tu provincia</option>${PROVS.map(p=>`<option ${CK.prov===p?'selected':''}>${p}</option>`).join('')}</select><div class="er" data-e="prov"></div>
-  <label>Ciudad</label><input id="f_city" autocomplete="address-level2" value="${CK.city}"><div class="er" data-e="city"></div>
-  <label>Dirección y referencia</label><textarea id="f_addr" rows="2" placeholder="Calle, número, referencia">${CK.addr}</textarea><div class="er" data-e="addr"></div>
-  <div class="shp" id="shp"></div>
-  <div id="sumw">${sumHtml()}</div>
-  <div class="ckb"><button class="btn alt" id="bk">Atrás</button><button class="btn" id="nx">Ir a pagar</button></div></div>`;
- }
- if(CK.step===3){
-  const t=totals();
-  h+=`<div class="pane">
-  <div class="pm sel" data-pm="tr"><i></i><b>Transferencia bancaria</b></div>
-  <div class="pm dis"><i></i><b>DeUna</b><small>Próximamente</small></div>
-  <div class="pm dis"><i></i><b>Tarjeta (con cuotas)</b><small>Próximamente</small></div>
-  <div class="acct"><h5>Transfiere a cualquiera de estas cuentas</h5>
-  ${ACCTS.map((a,i)=>`<div style="${i?'margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)':''}"><b>${a.banco}</b> · ${a.tipo}
-   <div class="ln"><span>N.º de cuenta</span><div><b>${a.num}</b><button class="cp" data-cp="${a.num}">Copiar</button></div></div>
-   <div class="ln"><span>Titular</span><div>${a.tit}</div></div>
-   <div class="ln"><span>Cédula</span><div>${a.ci}</div></div></div>`).join('')}
-  </div>
-  <div class="ref">Monto exacto a transferir<br><b>${m$(t.now)}</b></div>
-  <label class="up ${CK.proof?'has':''}" id="upl"><input type="file" id="f_proof" accept="image/*">${CK.proof?`<b>Comprobante cargado ✓</b><img src="${CK.proof}" alt="Comprobante"><small>Toca para cambiarlo</small>`:`<b>Subir foto del comprobante</b><small>Opcional: también puedes enviarla por Instagram</small>`}</label>
-  ${sumHtml()}
-  <p class="ckn">Al confirmar te damos un código de pedido para usar como referencia. Usamos tus datos solo para gestionar tu compra y tu envío. Tu pedido se reserva cuando envíes el comprobante y lo verifiquemos. Los envíos salen una vez confirmado el pago.</p>
-  <div class="ckb"><button class="btn alt" id="bk">Atrás</button><button class="btn" id="nx">Confirmar pedido · ${m$(t.now)}</button></div></div>`;
- }
- w.innerHTML=h;
- $('#ckx').onclick=()=>$('#ck').close();
- const bk=$('#bk'),nx=$('#nx');
- if($('#more'))$('#more').onclick=()=>$('#ck').close();
- if(bk)bk.onclick=()=>{collect();CK.step--;renderCk()};
- if(nx)nx.onclick=()=>{
-  if(CK.step===2){collect();if(!validate())return;CK.step=3;renderCk();$('#ck').scrollTop=0}
-  else if(CK.step===1){CK.step=2;renderCk()}
-  else if(CK.step===3)finish();
- };
- if(CK.step===2){
-  const upd=()=>{collect();const sh=shipCost(CK.prov,CK.city),el=$('#shp');
-   el.innerHTML=!CK.prov?'Elige tu provincia y calculamos el envío.':`Envío por Servientrega a <b>${CK.prov==='Guayas'?(sh===SHIP.guayaquil?'Guayaquil':'el Guayas'):CK.prov}</b>: <b>${m$(sh)}</b>`;
-   $('#sumw').innerHTML=sumHtml()};
-  ['f_prov','f_city','f_name','f_ci','f_tel','f_email','f_addr'].forEach(i=>$('#'+i).addEventListener('input',()=>{const el=$('#'+i);el.classList.remove('bad');const er=document.querySelector('[data-e="'+i.replace('f_','')+'"]');if(er)er.textContent='';upd()}));upd();
- }
- if(CK.step===3){const fi=$('#f_proof');fi.onchange=async()=>{const f=fi.files[0];if(!f)return;try{CK.proof=await shrink(f);renderCk()}catch(e){alert('No pudimos leer esa imagen. Prueba con otra.')}}}
- if(CK.step===3)w.querySelectorAll('[data-cp]').forEach(b=>b.onclick=e=>copy(b.dataset.cp,b,'Copiado','Copiar'));
-}
-function collect(){const g=i=>{const e=$('#'+i);return e?e.value.trim():null};
- [['name','f_name'],['ci','f_ci'],['tel','f_tel'],['email','f_email'],['prov','f_prov'],['city','f_city'],['addr','f_addr']].forEach(([k,i])=>{const v=g(i);if(v!=null)CK[k]=v})}
-function validate(){
- const er={};
- if(CK.name.length<5||!CK.name.includes(' '))er.name='Escribe tu nombre y apellido';
- if(!/^\d{10}$/.test(CK.ci))er.ci='10 dígitos';
- if(!/^09\d{8}$/.test(CK.tel))er.tel='Ej: 09XXXXXXXX';
- if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(CK.email))er.email='Escribe un correo válido';
- if(!CK.prov)er.prov='Elige tu provincia';
- if(CK.city.length<3)er.city='Escribe tu ciudad';
- if(CK.addr.length<8)er.addr='Escribe tu dirección y una referencia';
- document.querySelectorAll('.ckf .er').forEach(x=>x.textContent=er[x.dataset.e]||'');
- document.querySelectorAll('.ckf input,.ckf select,.ckf textarea').forEach(x=>x.classList.toggle('bad',!!er[x.id.replace('f_','')]));
- const f=Object.keys(er)[0];if(f){const el=$('#f_'+f);el&&el.focus()}
- return !f;
-}
-function copy(txt,btn,ok,orig){
- const done=()=>{btn.classList.add('ok');btn.textContent=ok;setTimeout(()=>{btn.classList.remove('ok');btn.textContent=orig},1600)};
- try{navigator.clipboard.writeText(txt).then(done,()=>{fallback()})}catch(e){fallback()}
- function fallback(){const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove();done()}
-}
-function shrink(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const k=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.75))};im.onerror=rej;im.src=u})}
-const DEMO=!/ladysclub|pages\.dev|localhost|127\.0\.0\.1/.test(location.host);
-async function send(order){
- if(DEMO){await new Promise(r=>setTimeout(r,700));return {ok:true,code:'LC-'+(Date.now()%1e6).toString().padStart(6,'0'),demo:true}}
- const r=await fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(order)});
- if(!r.ok)throw new Error('http '+r.status);return r.json();
-}
-async function finish(){
- const t=totals(),btn=$('#nx');btn.disabled=true;btn.textContent='Enviando…';
- const items=CART.map(x=>{const b=bag(x.id);return {id:b.id,name:b.kind+' '+b.name,q:x.q,price:b.price,state:b.state}});
- const order={name:CK.name,ci:CK.ci,tel:CK.tel,email:CK.email,prov:CK.prov,city:CK.city,addr:CK.addr,items,sub:t.sub,ship:t.sh,now:t.now,later:t.later,method:'transferencia',proof:CK.proof||null};
- let code,saved=false,demo=false;
- try{const r=await send(order);code=r.code;saved=true;demo=!!r.demo}catch(e){code='LC-'+(Date.now()%1e6).toString().padStart(6,'0')}
- CK.code=code;CK.saved=saved;CK.demo=demo;
- const lines=items.map(x=>`- ${x.q} × ${x.name}${x.state==='pre'?' (reserva)':''}`);
- CK._txt=`Pedido ${code}\n${lines.join('\n')}\n\nNombre: ${CK.name}\nCédula: ${CK.ci}\nCelular: ${CK.tel}\nCorreo: ${CK.email}\nEnvío: ${CK.prov}, ${CK.city}\nDirección: ${CK.addr}\n\nProductos: ${m$(t.sub)} · Envío: ${m$(t.sh)}\nPagado ahora (transferencia): ${m$(t.now)}${t.later>0?'\nPendiente al llegar: '+m$(t.later):''}`;
- CK._done=t;CK.step=4;CART=[];save();badge();renderCk();$('#ck').scrollTop=0;
-}
-document.addEventListener('click',e=>{
- const q=e.target.closest('[data-q]');if(q){const it=CART.find(x=>x.id===q.dataset.q);it.q=Math.max(1,Math.min(5,it.q+ +q.dataset.d));save();badge();renderCk()}
- const r=e.target.closest('[data-rm]');if(r){CART=CART.filter(x=>x.id!==r.dataset.rm);save();badge();renderCk()}
-});
-badge();
-
 /* ===== NUEVOS MODELOS ===== */
 BAGS.forEach(b=>{b.nuevo=NEWRE.test(b.id)});
 (function(){
  const N=BAGS.filter(b=>b.nuevo);if(!N.length)return;
  $('#nwt').innerHTML=N.map((b,i)=>`<div class="nt rv" style="--i:${i}" data-id="${b.id}" role="button" tabindex="0" aria-label="Ver ${b.kind} ${b.name}">
   <div class="ph"><img src="${b.img[0]}" alt="${b.kind} ${b.name}" loading="lazy"><span class="nb">Nuevo</span></div>
-  <div class="nf"><div class="k">${b.kind}</div><div class="n g">${b.name}</div><div class="p">${price(b)}</div><button class="btn" data-add="${b.id}">Reservar con $${ANT}</button></div></div>`).join('');
+  <div class="nf"><div class="k">${b.kind}</div><div class="n g">${b.name}</div><div class="p">${price(b)}</div><a class="btn" href="${link('ig','Hola, quiero reservar: '+b.kind+' '+b.name)}" target="_blank" rel="noopener">Reservar con $${ANT}</a></div></div>`).join('');
  document.querySelectorAll('.nt').forEach(el=>io.observe(el));
  $('#nwd').textContent=etaTxt(N[0]).replace(/^Llega(n)? /,'');
  const tr=$('#nwt'),by=()=>Math.max(240,tr.clientWidth*.7);
  $('#nwp').onclick=()=>tr.scrollBy({left:-by(),behavior:'smooth'});
  $('#nwn').onclick=()=>tr.scrollBy({left:by(),behavior:'smooth'});
- tr.onclick=ev=>{if(ev.target.closest('[data-add]'))return;const c=ev.target.closest('.nt');if(c)openBag(c.dataset.id)};
+ tr.onclick=ev=>{if(ev.target.closest('a'))return;const c=ev.target.closest('.nt');if(c)openBag(c.dataset.id)};
  tr.onkeydown=ev=>{if(ev.key==='Enter'){const c=ev.target.closest('.nt');if(c)openBag(c.dataset.id)}};
  renderFilters();renderGrid();
 })();
